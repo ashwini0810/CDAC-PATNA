@@ -1,0 +1,140 @@
+CREATE TABLE departments (
+  department_id NUMBER PRIMARY KEY,
+  department_name VARCHAR2(50)
+);
+
+CREATE TABLE employees (
+  employee_id   NUMBER,
+  first_name    VARCHAR2(50),
+  last_name     VARCHAR2(50),
+  department_id NUMBER,
+  job_title     VARCHAR2(50),
+  salary        NUMBER(10, 2),
+  hire_date     DATE,
+  PRIMARY KEY (employee_id),
+  FOREIGN KEY (department_id) REFERENCES departments (department_id)
+);
+
+
+INSERT INTO departments (department_id, department_name)
+VALUES (1, 'HR');
+
+INSERT INTO departments (department_id, department_name)
+VALUES (2, 'IT');
+
+INSERT INTO departments (department_id, department_name)
+VALUES (3, 'Finance');
+
+INSERT INTO departments (department_id, department_name)
+VALUES (4, 'Sales');
+
+INSERT INTO employees (employee_id, first_name, last_name, department_id, job_title, salary, hire_date)
+VALUES (1, 'John', 'Doe', 1, 'Manager', 75000.00, TO_DATE('2022-03-15', 'YYYY-MM-DD'));
+
+INSERT INTO employees (employee_id, first_name, last_name, department_id, job_title, salary, hire_date)
+VALUES (2, 'Jane', 'Smith', 2, 'Developer', 60000.00, TO_DATE('2022-05-10', 'YYYY-MM-DD'));
+
+INSERT INTO employees (employee_id, first_name, last_name, department_id, job_title, salary, hire_date)
+VALUES (3, 'Michael', 'Johnson', 1, 'Analyst', 55000.00, TO_DATE('2022-02-10', 'YYYY-MM-DD'));
+
+INSERT INTO employees (employee_id, first_name, last_name, department_id, job_title, salary, hire_date)
+VALUES (4, 'Emily', 'Anderson', 3, 'Assistant Manager', 65000.00, TO_DATE('2023-01-05', 'YYYY-MM-DD'));
+
+INSERT INTO employees (employee_id, first_name, last_name, department_id, job_title, salary, hire_date)
+VALUES (5, 'David', 'Wilson', 4, 'Sales Representative', 60000.00, TO_DATE('2022-11-20', 'YYYY-MM-DD'));
+
+INSERT INTO employees (employee_id, first_name, last_name, department_id, job_title, salary, hire_date)
+VALUES (6, 'Jessica', 'Thompson', 1, 'Manager', 70000.00, TO_DATE('2022-01-10', 'YYYY-MM-DD'));
+
+-----------------------------------------------------------
+10 questions related to exception handling in Oracle PL/SQL:
+-----------------------------------------------------------
+
+
+1. Write a PL/SQL block that retrieves the salary of an employee based on their employee ID. Handle the exception if the employee ID does not exist.
+2. Write a PL/SQL block that calculates the average salary of employees in a department based on the department ID. Handle the exception if there are no employees in the department.
+3. Write a PL/SQL block that updates the salary of an employee based on their employee ID. Handle the exception if the new salary is less than the current salary.
+4. Write a PL/SQL block that inserts a new department into the "departments" table. Handle the exception if a department with the same ID already exists.
+5. Write a PL/SQL block that retrieves the employee details (first name, last name, and department) based on their employee ID. Handle the exception if the employee ID is null.
+6. Write a PL/SQL block that deletes an employee from the "employees" table based on their employee ID. Handle the exception if the employee ID does not exist.
+7. Write a PL/SQL block that calculates the total salary of all employees. Handle the exception if the result exceeds a threshold of 100000.
+8. Write a PL/SQL block that updates the hire date of an employee based on their employee ID. Handle the exception if the hire date is in the future.
+9. Write a PL/SQL block that retrieves the department name of an employee based on their employee ID. Handle the exception if the department ID is null.
+10. Write a PL/SQL block that inserts a new employee into the "employees" table. Handle the exception if any of the mandatory fields (employee ID, first name, last name) are null.
+
+
+--------------------------------------------------------------------------
+3 questions to practice ERD data modeling for an Oracle database solution:
+--------------------------------------------------------------------------
+1. Design an ERD for a university system that includes entities such as "Student," "Course," and "Department." Consider the relationships between these entities and their attributes.
+
+1. University System ERD:
+
+Entities:
+- Student (student_id, name, email, major)
+- Course (course_id, title, description, credits)
+- Department (department_id, name, location)
+
+Relationships:
+- Student takes Course (many-to-many): Represents the enrollment of students in courses. It has attributes like enrollment_date and grade.
+- Course belongs to Department (one-to-many): Represents the association of courses with the department that offers them.
+
+
+1. University System ERD:
+
+									--------------------------
+									|						 |
+       +-----------  +         +-----------------+          +-----------------+
+       |  Student    |         |   Course    	 |          |  Department     |
+       +-----------  +         +---------------- +          +-----------------+
+       |student_id(PK)         |  course_id(PK)  |          |department_id(PK)|
+       |    name     |         |    title    	 |          |     name    	  |
+       |    email    |         | description 	 |          |   location  	  |
+       |    major    |         |   credits   	 |          |             	  | 
+	   |			 |		   |department_id(FK)|	        +-----------------+
+	   +-------------+   	   +-----------------+ 	
+             |                      |
+             |                      |
+       +-------------------------------------+
+       |        Student takes Course         |
+       +-------------------------------------+
+       |   student_id(FK)					 |
+	   |   course_id(FK) 			         |
+	   |   enrollment_date   				 |
+	   |   grade						     |
+       +-------------------------------------+
+
+2. Extend the previous ERD for a university system to include an additional entity called "Professor." Define the relationships between "Professor," "Course," and "Department." Consider the attributes of each entity and their relationships.
+
+3. Design an ERD for an e-commerce platform that includes entities such as "Customer," "Product," and "Order." Define the relationships between these entities, including the cardinality and participation constraints. Consider additional entities or attributes that may be necessary for a complete e-commerce system.
+
+--------------------------------------------
+normalization question :
+--------------------------------------------
+
+Question 1:Normalize this table to 3rd Normal Form (3NF).
+
+Consider the following unnormalized table representing customer orders:
+Order (order_id,product_name, customer_name, customer_email, product_price, quantity)
+
+
+Note: You may need to make assumptions or add additional attributes to the tables during the normalization process to properly represent the relationships and dependencies.
+
+----------------
+Sample Solution: 
+----------------
+
+Question 1:
+Original table:
+Order (order_id, customer_name, customer_email, product_name, product_price, quantity)
+
+Normalized tables:
+------------------
+
+Customer (customer_id, customer_name, customer_email)
+Order (order_id, customer_id)
+Product (product_id, product_name, product_price)
+Order_Item (order_id, product_id, quantity)
+
+In this solution, the original table is normalized into four separate tables: 'Customer', 'Order', 'Product', and 'Order_Item'. The 'Customer' table contains customer information, the 'Order' table contains order information, the 'Product' table contains product information, and the 'Order_Item' table represents the relationship between orders and products.
+

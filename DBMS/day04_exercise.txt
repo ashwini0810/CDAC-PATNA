@@ -1,0 +1,89 @@
+Two tables: "employees" and "departments."
+The "employees" table will contain information about employees,
+while the "departments" table will contain information about different departments in a company. 
+
+drop table departments;
+drop table employees;
+
+CREATE TABLE departments (
+  department_id NUMBER primary key,
+  department_name VARCHAR2(50)
+);
+
+
+INSERT INTO departments (department_id, department_name)
+VALUES (1, 'HR');
+
+INSERT INTO departments (department_id, department_name)
+VALUES (2, 'IT');
+
+INSERT INTO departments (department_id, department_name)
+VALUES (3, 'Finance');
+
+INSERT INTO departments (department_id, department_name)
+VALUES (4, 'Sales');
+
+CREATE TABLE employees (
+  employee_id   number,
+  first_name    VARCHAR2(50),
+  last_name     VARCHAR2(50),
+  department_id number,
+  job_title     VARCHAR2(50),
+  salary        NUMBER(10, 2),
+  hire_date     DATE,
+  PRIMARY KEY (employee_id)
+);
+
+INSERT INTO employees (employee_id, first_name, last_name, department_id, job_title, salary, hire_date)
+VALUES (1, 'John', 'Doe', 1, 'Manager', 75000.00, TO_DATE('2022-03-15', 'YYYY-MM-DD'));
+
+INSERT INTO employees (employee_id, first_name, last_name, department_id, job_title, salary, hire_date)
+VALUES (3, 'Michael', 'Johnson', 1, 'Analyst', 55000.00, TO_DATE('2022-02-10', 'YYYY-MM-DD'));
+
+INSERT INTO employees (employee_id, first_name, last_name, department_id, job_title, salary, hire_date)
+VALUES (4, 'Emily', 'Anderson', 3, 'Assistant Manager', 65000.00, TO_DATE('2023-01-05', 'YYYY-MM-DD'));
+
+INSERT INTO employees (employee_id, first_name, last_name, department_id, job_title, salary, hire_date)
+VALUES (6, 'Jessica', 'Thompson', 1, 'Manager', 70000.00, TO_DATE('2022-01-10', 'YYYY-MM-DD'));
+
+INSERT INTO employees (employee_id, first_name, last_name, department_id, job_title, salary, hire_date)
+VALUES (7, 'Andrew', 'Miller', 3, 'Analyst', 50000.00, TO_DATE('2022-05-25', 'YYYY-MM-DD'));
+
+INSERT INTO employees (employee_id, first_name, last_name, department_id, job_title, salary, hire_date)
+VALUES (9, 'Thomas', 'Brown', 4, 'Sales Manager', 90000.00, TO_DATE('2022-04-01', 'YYYY-MM-DD'));
+
+INSERT INTO employees (employee_id, first_name, last_name, department_id, job_title, salary, hire_date)
+VALUES (10, 'Jennifer', 'Davis', 4, 'Sales Representative', 60000.00, TO_DATE('2023-03-02', 'YYYY-MM-DD'));
+
+INSERT INTO employees (employee_id, first_name, last_name, department_id, job_title, salary, hire_date)
+VALUES (11, 'Gaurav', 'Rajput', null, 'Manager', 75000.00, TO_DATE('2022-03-15', 'YYYY-MM-DD'));
+
+-----------------------------------------------------------
+25 questions 
+-----------------------------------------------------------
+
+1.Retrieve the first name, last name, and department name of employees whose department ID is 1.
+Retrieve the first name, last name, and department name of employees whose department ID is greater than 2.
+Retrieve the first name, last name, and department name of employees whose first name starts with 'J'.
+Retrieve the first name, last name, and department name of employees whose last name ends with 'son'.
+Retrieve the first name, last name, and department name of employees whose department name is not 'IT'.
+Retrieve the first name, last name, and department name of employees whose department name contains the word 'Sales'.
+Retrieve the first name, last name, and department name of employees whose salary is greater than $50,000.
+Retrieve the first name, last name, and department name of employees hired after January 1, 2022.
+Retrieve the first name, last name, and department name of employees who are not managers.
+Retrieve the first name, last name, and department name of employees who have a job title of 'Engineer'.
+Retrieve the first name, last name, and department name of employees whose hire date is between January 1, 2022, and December 31, 2022.
+Retrieve the first name, last name, and department name of employees whose department name is 'HR' and their salary is less than $60,000.
+Retrieve the first name, last name, and department name of employees whose department name is 'Finance' and their job title contains the word 'Analyst'.
+Retrieve the first name, last name, and department name of employees whose department name is 'IT' and their hire date is before January 1, 2022.
+Retrieve the first name, last name, and department name of employees whose department name is not 'HR' and their salary is greater than $70,000.
+Retrieve the first name, last name, and department name of employees whose department name is not 'Finance' and their job title starts with 'Senior'.
+Retrieve the first name, last name, and department name of employees whose department name is not 'IT' and their hire date is after January 1, 2022.
+Retrieve the first name, last name, and department name of employees whose department ID is 2 or 3.
+Retrieve the first name, last name, and department name of employees whose department ID is not 1 or 4.
+Retrieve the first name, last name, and department name of employees whose first name starts with 'A' and their last name ends with 'son'.
+Retrieve the first name, last name, and department name of employees whose department name is 'Sales' and their salary is greater than $60,000.
+Retrieve the first name, last name, and department name of employees whose department name is 'HR' or 'Finance' and their job title contains the word 'Manager'.
+Retrieve the first name, last name, and department name of employees whose department name is 'IT' or 'Finance' and their hire date is before January 1, 2022.
+Retrieve the first name, last name, and department name of employees whose department name is not 'IT' or 'HR' and their salary is greater than $80,000.
+Retrieve the first name, last name, and department name of employees whose department name is not 'Finance' or 'Sales' and their job title starts with 'Assistant'.

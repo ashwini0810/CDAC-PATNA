@@ -1,0 +1,181 @@
+
+------------------------------
+Group by  and Having clause 
+-----------------------------
+
+-- group by demo 
+
+select count(*)
+from lms_members 
+
+--
+select MEMBERSHIP_STATUS,count(*)
+from lms_members 
+group by MEMBERSHIP_STATUS;
+--
+select MEMBERSHIP_STATUS,city,count(*)
+from lms_members
+group by MEMBERSHIP_STATUS , city 
+having count(*) > 2
+
+-- string functions
+----------------- String Functions in Oracle ---------------------
+-- https://www.oracletutorial.com/oracle-string-functions/
+------------------------------------------------------------------
+
+-- INSTR(string , substring [, start_position [, occurrence]])
+SELECT  INSTR( 'This is a playlist', 'is' ) substring_location FROM   dual;
+SELECT  INSTR( 'This is a playlist', 'is',1,1 ) substring_location FROM   dual;
+SELECT  INSTR( 'This is a playlist', 'is',1,2 ) substring_location FROM   dual;
+SELECT  INSTR( 'This is a playlist', 'is',1,2 ) substring_location FROM   dual;
+
+-- SUBSTR( str, start_position [, substring_length, [, occurrence ]] );
+SELECT  SUBSTR( 'Oracle Substring', 1, 6 ) SUBSTRING FROM   dual;
+SELECT  SUBSTR( 'Oracle Substring', 1, 3 ) SUBSTRING FROM   dual;
+SELECT  SUBSTR( 'Oracle Substring', -3, 3 ) SUBSTRING FROM   dual;
+
+-------------------
+Full Fledged DEMO
+-------------------
+/* count of no of members in each city */
+select city , count(*)
+from lms_members 
+group by city;
+
+/* count of members against their membership_status */
+status     cnt
+Temporary   12
+Permanant   13
+
+select membership_status status, count(*) cnt
+from lms_members 
+group by membership_status;
+
+/* count of suppliers who stay in PUNE/MUMBAI/DELHI against their city  */
+select address , count(*) cnt_of_suppliers
+from lms_suppliers_details 
+where address in ('PUNE','MUMBAI','DELHI')
+group by address
+
+/* number of books in each category that are placed in rack_num A1/A2/A3 */
+select category , count(*) cnt_against_category
+from lms_book_details
+where rack_num in ('A1','A2','A3')
+group by category
+
+/* number of books issued in respective months for the month of APRIL/MAY  */
+select decode(extract(month from date_issue),4,'April' , 5 , 'May') month , count(*) no_of_books
+from lms_book_issue iss
+where extract(month from date_issue) in (4,5)
+group by extract(month from date_issue)
+
+/* count of suppliers against their respective category of email accounts categories should be  gmail/ yahoo/ others 
+
+category cnt 
+gmail     6
+yahoo     2
+others    6 
+*/
+
+select EMAIL, instr(email,'@') location , substr(email,instr(email,'@')+1) substr_extracted ,
+decode(substr(email,instr(email,'@')+1),'gmail.com', 'gmail' , 'yahoo.com','yahoo','others') category
+from lms_suppliers_details sd ;
+
+-- solution 
+select decode(substr(email,instr(email,'@')+1),'gmail.com', 'gmail' , 'yahoo.com','yahoo','others') category , count(*) cnt
+from lms_suppliers_details sd 
+group by decode(substr(email,instr(email,'@')+1),'gmail.com', 'gmail' , 'yahoo.com','yahoo','others')     ;
+    
+---------------------------------
+GROUP BY EXERCISES
+--------------------------------
+
+/* category of book ,
+    total number of books under that category 
+    such that the category has more than 2 books 
+*/
+
+select category, count(*) cnt
+from lms_book_details bd 
+group by category
+having count(*) > 2;
+
+
+/* book code and name of the book which has been issued atleast twice */ 
+
+select bd.book_code , bd.book_title 
+from lms_book_details bd inner join lms_book_issue iss on ( bd.book_code = iss.book_code)
+group by bd.book_code,bd.book_title
+having count(*) >= 2;
+
+/* book code and name of the book which has been issued atleast twice to a member*/
+
+select distinct bd.book_code , bd.book_title
+from lms_book_details bd inner join lms_book_issue iss on ( bd.book_code = iss.book_code)
+group by bd.book_code,bd.book_title,iss.member_id
+having count(*) >= 2;
+
+/* book codes and their issued counts */
+select book_code , count(*)
+from lms_book_issue 
+group by book_code
+
+
+/* book_code and name of the book which has been issued more than 4 times 
+   and has more than 0 suppliers 
+   (Note: Java how to program has 2 book codes because of different published date) 
+*/
+
+select distinct bd.book_code,bd.book_title,count(*) no_of_issues
+from lms_book_details bd inner join lms_book_issue iss on (bd.book_code=iss.book_code)
+where  bd.supplier_id is not null 
+group by bd.book_code,bd.book_title
+having count(*)>=4 
+
+/*
+name of the supplier along with his contact number with an  flag 'Y' or 'N'
+'y' -> he had supplied a book which has been issued two or more times
+'n' --> he had supplied a book which has been issued less than two times 
+'NA' --> if he hasn't supplied any book 
+
+
+supplier_name supplier_contact flag
+xyz             9090           Y    -> he had supplied a book which has been issued two or more times 
+abc             9090           N    -> he had supplied a book which has been issued less than two times
+efg             9090           NA   -> if he hasn't supplied any book 
+
+*/
+
+select sd.supplier_id,sd.supplier_name,sd.contact,count(bd.book_code) supplied_book_count,count(iss.book_issue_no)  issued_book_count,
+case when count(bd.book_code) = 0 then 'NA'
+     when count(iss.book_issue_no) < 2 then 'N' 
+     when count(iss.book_issue_no) >= 2 then 'Y'
+end flag
+  
+from lms_suppliers_details sd left join lms_book_details bd on ( sd.supplier_id = bd.supplier_id )
+left join lms_book_issue iss on ( iss.book_code = bd.book_code)    
+group by sd.supplier_id,sd.supplier_name,sd.contact;
+
+/*
+name of the member along with his city with an  flag 'Y' or 'N' or 'NA'
+'Y' -> he has issued a book and paid a fine of more than 50
+'N' --> he has issued a book and paid a fine of less than 50
+'NA' --> if he hasn't issued any book 
+
+member_name city   		flag
+Sagar       Kerala  	NA
+Akshay		Chennai		N	
+Amruta		Pune        Y
+*/
+
+select   member_name , city , count(BOOK_ISSUE_NO) issued_book_count , sum(fine_amount) total_fine_paid ,
+    case 
+    when count(BOOK_ISSUE_NO) = 0 then 'NA'
+    when sum(fine_amount) < 50 or sum(fine_amount) is null then 'N'
+    when sum(fine_amount) > 50 then 'Y'
+    end flag
+from lms_members lm left join lms_book_issue iss on ( lm.member_id = iss.member_id)
+    left join lms_fine_details fd on ( fd.fine_range = iss.fine_range) 
+group by member_name , city 
+
+

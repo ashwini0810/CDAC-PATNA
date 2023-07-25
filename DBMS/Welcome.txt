@@ -1,0 +1,11 @@
+Welcome to the class!
+
+
+We will be using Oracle as our RDBMS database , below is the link where we will write our oracle code
+
+https://livesql.oracle.com/apex/f?p=590:1000
+
+
+Db ranking 
+
+https://db-engines.com/en/ranking

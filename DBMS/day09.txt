@@ -1,0 +1,328 @@
+----------------------------------------------------------
+Introduction to PL/SQL Exceptions -- Exception Handling 
+----------------------------------------------------------
+
+PL/SQL treats all errors that occur in an anonymous block, procedure, or function as exceptions. The exceptions can have different causes such as coding mistakes, bugs, even hardware failures.
+
+It is not possible to anticipate all potential exceptions, however, you can write code to handle exceptions to enable the program to continue running as normal.
+
+The code that you write to handle exceptions is called an exception handler.
+
+A PL/SQL block can have an exception-handling section, which can have one or more exception handlers.
+
+BEGIN
+    -- executable section
+    ...
+    -- exception-handling section
+    EXCEPTION 
+        WHEN e1 THEN 
+            -- exception_handler1
+        WHEN e2 THEN 
+            -- exception_handler2
+        WHEN OTHERS THEN
+            -- other_exception_handler
+END;
+
+------------------------------------------
+--- Demo
+------------------------------------------
+
+
+drop table my_custom_users ;
+create table my_custom_users ( username varchar2(100) , user_id number );
+
+insert into my_custom_users ( username,user_id ) values ('SYSTEM',0);
+insert into my_custom_users ( username,user_id ) values ('User1',1);
+insert into my_custom_users ( username,user_id ) values ('User2',2);
+insert into my_custom_users ( username,user_id ) values ('User2',2);
+insert into my_custom_users ( username,user_id ) values ('User3',3);
+insert into my_custom_users ( username,user_id ) values ('User4',4);
+insert into my_custom_users ( username,user_id ) values ('User5',5);
+
+
+select * from my_custom_users;
+
+-- Normal execution
+DECLARE
+  l_user_id   my_custom_users.user_id%TYPE := 0;
+  l_username  my_custom_users.username%TYPE;
+BEGIN
+  SELECT username
+  INTO   l_username
+  FROM   my_custom_users
+  WHERE  user_id = l_user_id;
+  
+  DBMS_OUTPUT.put_line('l_username=' || l_username);
+END;
+/
+
+-- No user 999999 and no exception handling
+DECLARE
+  l_user_id   my_custom_users.user_id%TYPE := 999999;
+  l_username  my_custom_users.username%TYPE;
+BEGIN
+  SELECT username
+  INTO   l_username
+  FROM   my_custom_users
+  WHERE  user_id = l_user_id;
+  
+  DBMS_OUTPUT.put_line('l_username=' || l_username);
+END;
+/
+
+-- No user 999999 and exception handling
+DECLARE
+  l_user_id   my_custom_users.user_id%TYPE := 999999;
+  l_username  my_custom_users.username%TYPE; 
+BEGIN
+  SELECT username
+  INTO   l_username
+  FROM   my_custom_users
+  WHERE  user_id = l_user_id;
+
+  DBMS_OUTPUT.put_line('l_username=' || l_username);
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    DBMS_OUTPUT.put_line('user_id=' || l_user_id ||' not found in the my_custom_users table ');
+END;
+
+-- user defined exception handling without a custom message in its definition 
+-- requirement is SYSTEM user (user_id = 0 )  being a priviledged user should not be allowed to do some operation 
+DECLARE
+  l_user_id   my_custom_users.user_id%TYPE := 0;
+  l_username  my_custom_users.username%TYPE;
+  
+  ex_forbidden_users  EXCEPTION; /*user defined exception created */
+BEGIN
+  SELECT username
+  INTO   l_username
+  FROM   my_custom_users
+  WHERE  user_id = l_user_id;
+  
+  -- Signal an error is the SYS or SYSTEM users are queried.
+  IF l_username IN ('SYS', 'SYSTEM') THEN
+    RAISE ex_forbidden_users; /*user defined exception raise */
+  END IF;
+  
+  DBMS_OUTPUT.put_line('l_username=' || l_username);
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    DBMS_OUTPUT.put_line('No users have a user_id=' || l_user_id);
+  WHEN ex_forbidden_users THEN /*user defined exception handled */
+    DBMS_OUTPUT.put_line( l_username || ' user, is forbidden to do some operation !!!');
+END;
+
+-- user defined exception handling with a custom message in its definition 
+-- requirement is SYSTEM user (user_id = 0 )  being a priviledged user should not be allowed to do some operation 
+
+DECLARE
+  l_user_id   my_custom_users.user_id%TYPE := 0;
+  l_username  my_custom_users.username%TYPE;
+BEGIN
+  SELECT username
+  INTO   l_username
+  FROM   my_custom_users
+  WHERE  user_id = l_user_id;
+
+  -- Signal an error is the SYS or SYSTEM users are queried.
+  IF l_username IN ('SYS', 'SYSTEM') THEN
+     /*user defined exception created and raised along with a message */
+     /*This allows the application to raise application errors rather than just Oracle errors. Error numbers are defined between -20,000 and -20,999.*/
+      RAISE_APPLICATION_ERROR(-20000, l_username || ' user, is forbidden to do some operation !!!');
+  END IF;
+
+  DBMS_OUTPUT.put_line('l_username=' || l_username);
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    DBMS_OUTPUT.put_line('No users have a user_id=' || l_user_id);
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.put_line(SQLERRM);  /*user defined exception handled and its message is printed */
+END;
+
+-- user defined exception handling with a custom message in its definition 
+-- requirement is SYSTEM user (user_id = 0 )  being a priviledged user should not be allowed to do some operation 
+DECLARE
+  l_user_id   my_custom_users.user_id%TYPE := 0;
+  l_username  my_custom_users.username%TYPE;
+
+  ex_forbidden_users  EXCEPTION;  /*user defined exception created  */
+  PRAGMA EXCEPTION_INIT(ex_forbidden_users, -20000);  /*user defined exception is linked to a exception number  */
+BEGIN
+  SELECT username
+  INTO   l_username
+  FROM   my_custom_users
+  WHERE  user_id = l_user_id;
+
+  -- Signal an error is the SYS or SYSTEM users are queried.
+  IF l_username IN ('SYS', 'SYSTEM') THEN
+    RAISE_APPLICATION_ERROR(-20000, l_username || ' user, is forbidden to do some operation !!!'); /*user defined exception raised along with a message */
+  END IF;
+
+  DBMS_OUTPUT.put_line('l_username=' || l_username);
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    DBMS_OUTPUT.put_line('No users have a user_id=' || l_user_id);
+  WHEN ex_forbidden_users THEN
+    DBMS_OUTPUT.put_line(SQLERRM);
+END;
+
+
+-- Reusing NO_DATA_FOUND system defined exception instead of creating a user defined exception for
+-- requirement that SYSTEM user (user_id = 0 )  being a priviledged user should not be allowed to do some operation 
+DECLARE
+  l_user_id   my_custom_users.user_id%TYPE := 0;
+  l_username  my_custom_users.username%TYPE;
+
+BEGIN
+  SELECT username
+  INTO   l_username
+  FROM   my_custom_users
+  WHERE  user_id = l_user_id;
+
+  -- Signal an error is the SYS or SYSTEM users are queried.
+  IF l_username IN ('SYS', 'SYSTEM') THEN
+    raise no_data_found;
+  END IF;
+
+  DBMS_OUTPUT.put_line('l_username=' || l_username);
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    DBMS_OUTPUT.put_line('No users have a user_id=' || l_user_id);
+END;
+
+
+----------
+Exercises on Exception handling 
+----------
+1) Hardcode a member_name and search it in lms_members table 
+If the user exists 
+	print 'Hello <member_name>'
+If the user does not exists 
+	print 'Hello <member_name> , you are not my member , Please consider being one , We are Great !!!'
+
+declare
+    l_member_name lms_members.member_name%type := 'Gaurav';
+    l_table_member_name lms_members.member_name%type;
+begin
+    select member_name into l_table_member_name  from lms_members where member_name = l_member_name; 
+	dbms_output.put_line('Hello '|| l_member_name);
+exception
+    when NO_DATA_FOUND then
+      dbms_output.put_line('Hello '|| l_member_name||', you are not my member , Please consider being one , We are Great !!!');
+end;    
+
+2) Hardcode a city value and search if that city exists in lms_members 
+If the city exists only once 
+	print the message ' You are the only one from this city ,consider spreading a word of mouth, we are Awesome !!!!'
+If the city does not exists 
+	handle the exception with a message 'None from your city , Please consider being the first member, We are Great !!!'
+if Multiple members exists 
+	handle the exception with a message 'We need to assign a POC to your city , there are many members for the city'
+if the city is 'PUNE'
+	raise an exception with a message 'Pune is HeadQuarters of my Organisation , Glad you are from where I was born '
+if the city is 'Bangalore'
+	raise an exception with a message 'Bangalore , Traffic woes I see !!!'
+
+declare 
+begin
+    raise_application_error(-20000,'Pune is HeadQuarters of my Organisation , Glad you are from where I was born '); /*raised pune */
+	raise_application_error(-20001,'Bangalore , Traffic woes I see !!!'); /*raised bangalore */
+exception
+when no_data_found then 
+  	--- handling for no_data_found
+when too_many_rows then 
+  	--- handling for too_many_rows
+end;
+
+
+declare 
+     /* Hardcode a city value */
+    l_city_name lms_members.city%type := 'CHENNAI';
+	l_member_name lms_members.member_name%type;
+        
+begin
+    if l_city_name = 'Pune' then
+    	raise_application_error(-20000,'Pune is HeadQuarters of my Organisation , Glad you are from where I was born '); /*raised pune */
+    elsif  l_city_name = 'Bangalore' then
+		raise_application_error(-20001,'Bangalore , Traffic woes I see !!!'); /*raised bangalore */
+    end if;
+
+    select member_name into l_member_name from lms_members where city = l_city_name;
+
+    dbms_output.put_line(' You are the only one from this city ,consider spreading a word of mouth, we are Awesome !!!!');
+
+exception
+when no_data_found then 
+  	--- handling for no_data_found
+    dbms_output.put_line('None from your city , Please consider being the first member, We are Great !!!');
+when too_many_rows then 
+  	--- handling for too_many_rows
+    dbms_output.put_line('We need to assign a POC to your city , there are many members for the city');
+end;
+
+
+--------------------------------------------------------------------------------
+Normalisation : is a part of data modelling process(Logical Stage) that helps remove redundancy
+-------------------------------------------------------------------------------
+
+Remember this by : Key , Only key and Nothing but the key 
+
+1) 1st normal form : Primary Key , data in all columns should be atomic in nature 
+2) 2nd normal form : All non key columns should be entirely dependent on the PK
+					 ( Partial key dependency removal)	
+3) 3rd normal form : A non key should not be dependent another non key column
+                     ( Transitive dependency removal)
+					 
+
+
+-------------------------------------
+--Demo on Set Theory in Databases 
+-------------------------------------
+create table base_location ( city varchar2(100));
+create table branch_location ( city varchar2(100));
+
+insert into base_location(city) values ('Pune');
+insert into base_location(city) values ('Mumbai');
+insert into base_location(city) values ('Bangalore');
+
+insert into branch_location(city) values ('Goa');
+insert into branch_location(city) values ('Kashmir');
+insert into branch_location(city) values ('Assam');
+insert into branch_location(city) values ('Jammu');
+insert into branch_location(city) values ('Bangalore');
+
+/* give me all base and branch locations for our organisation */
+select city from base_location
+union 
+select city from branch_location;
+
+select city from base_location
+union all
+select city from branch_location;
+
+/* give me common locations for my base and branch office*/
+select city from base_location
+intersect 
+select city from branch_location;
+
+/* give me locations for my base office whcih are not there in my branch office */
+select city from base_location
+minus
+select city from branch_location;
+
+/* give me locations for my branch office whcih are not there in my base office */
+select city from branch_location
+minus
+select city from base_location;
+
+
+create table mis_location( city varchar2(100));
+insert into mis_location(city) values ( 'Jamshedpur');
+insert into mis_location(city) values ( 'Indore');
+
+/* give me all base, branch and miscellaneous locations for our organisation */
+select city from base_location
+union 
+select city from branch_location
+union 
+select city from mis_location;					 

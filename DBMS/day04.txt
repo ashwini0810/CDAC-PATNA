@@ -1,0 +1,248 @@
+--------------------------
+Joins Theory, Why do we need them , What are the types of joins 
+--------------------------------------------------------
+Types of joins :
+1) Inner join/ Equi Join / Natural Join
+2) Outer join :-> Full outer join/Full join , Left Outer Join /Left Join,  Right Outer Join/Right join
+3) Cross Join 
+
+-- simple demonstration on join types 
+create table seta(col1 number );
+create table setb(col1 number );
+insert into seta values (1);
+insert into seta values (2);
+insert into seta values (3);
+insert into seta values (4);
+insert into seta values (5);
+
+insert into setb values (3);
+insert into setb values (4);
+insert into setb values (5);
+insert into setb values (6);
+insert into setb values (7);
+
+
+select * from seta;
+select * from setb;
+
+-- select * from seta ? join setb on ( seta.? = setb.?)
+select * from seta inner join setb on ( seta.col1 = setb.col1);
+select * from seta full join setb on ( seta.col1 = setb.col1);
+select * from seta left join setb on ( seta.col1 = setb.col1);
+select * from seta right join setb on ( seta.col1 = setb.col1);
+
+    
+select * from seta left join setb on ( seta.col1 = setb.col1) where setb.col1 is null ;
+select * from seta right join setb on ( seta.col1 = setb.col1) where seta.col1 is null ;
+select * from seta full join setb on ( seta.col1 = setb.col1) where setb.col1 is null  or  seta.col1 is null;
+
+--------------------
+ -- Joins Demo 
+-------------------
+/* name of the member , status of his membership who have issued a book */
+select distinct lms_members.MEMBER_NAME,lms_members.MEMBERSHIP_STATUS 
+from lms_members  inner join  lms_book_issue on(lms_members.member_id = lms_book_issue.member_id );
+
+/* name of the member , status of his membership who have not issued a book */
+
+select *
+from lms_members left join lms_book_issue on ( lms_members.member_id = lms_book_issue.member_id )
+where  lms_book_issue.BOOK_ISSUE_NO	 is null    ;
+
+/* name of the book and its supplier's email,contact number( case1: if it has no supplier dont display that book) */
+select bd.BOOK_TITLE,sd.EMAIL,sd.contact
+from LMS_SUPPLIERS_DETAILS SD inner join LMS_BOOK_DETAILS BD on(sd.supplier_id = bd.supplier_id);
+
+/* name of the book and its supplier's email,contact number( case2: if it has no suppliers  ) */
+select bd.BOOK_TITLE,sd.EMAIL,sd.contact
+from   LMS_BOOK_DETAILS BD left outer join LMS_SUPPLIERS_DETAILS SD on(sd.supplier_id = bd.supplier_id)
+where sd.SUPPLIER_ID is null;
+
+/* name of the book and its supplier's email,contact number
+( case3: display all the books irrespective of if they have suppliers or not
+  and display all the suppliers irrespective of if they have supplied a book or not ) */
+
+select bd.BOOK_TITLE,sd.EMAIL,sd.contact
+from   LMS_BOOK_DETAILS BD full outer join LMS_SUPPLIERS_DETAILS SD on(sd.supplier_id = bd.supplier_id)  ;
+
+/* display suppliers who did not supply any book */
+select sd.supplier_id	,SUPPLIER_NAME,	ADDRESS	,CONTACT	,EMAIL
+from  lms_suppliers_details sd left join lms_book_details bd on (bd.supplier_id = sd.supplier_id)
+where bd.supplier_id  is null ;
+
+/* 
+I want to mandate all my suppliers to supply all available books in my LMS 
+so I want a query that gives the name of the supplier , contact and book name , book price
+*/  
+
+select sd.supplier_name,sd.contact,bd.book_title,bd.price
+from LMS_SUPPLIERS_DETAILS sd cross join LMS_BOOK_DETAILS bd;
+
+-----------------------------------------------------
+Joins Hands on 
+-----------------------------------------------------
+/* name of the book , publication , date of publication along with supplier name and his contact number 
+Note : books that have no suppliers should not be displayed*/
+
+select book_title,publication,publish_date,supplier_name,contact
+from lms_book_details bd inner join lms_suppliers_details sd on ( bd.supplier_id = sd.supplier_id )
+
+/*name of the book , publication , date of publication along with supplier name and his contact number which may or may not have a supplier*/
+
+select BOOK_TITLE,PUBLICATION, PUBLISH_DATE,SUPPLIER_NAME,CONTACT
+from lms_book_details bd left join lms_suppliers_details sd on ( bd.supplier_id = sd.supplier_id );
+
+/* name of the member , status of his membership who have issued a book and never paid a fine  */
+
+select distinct MEMBER_NAME, MEMBERSHIP_STATUS
+from lms_members lm inner join lms_book_issue iss on ( lm.member_id = iss.member_id)
+where FINE_RANGE is null ;
+
+/* name of the member , status of his membership who have issued a book and paid atleast fine more than 74 rs*/
+
+select distinct MEMBER_NAME,MEMBERSHIP_STATUS
+from lms_members lm inner join lms_book_issue iss on ( lm.member_id = iss.member_id)
+    inner join lms_fine_details fd on ( iss.FINE_RANGE = fd.FINE_RANGE)
+where FINE_AMOUNT > 74
+
+
+/* name of the member , status of his membership who have issued a book 
+and paid atleast fine more than 74 rs 
+and the supplier has a gmail account */
+
+select distinct member_name,membership_status
+from lms_members lm inner join lms_book_issue iss on ( lm.member_id = iss.member_id)
+    inner join lms_fine_details fd on ( iss.FINE_RANGE = fd.FINE_RANGE)
+        inner join lms_book_details bd on ( bd.book_code = iss.book_code )
+    inner join lms_suppliers_details sd on ( sd.supplier_id = bd.supplier_id )
+where FINE_AMOUNT > 74 and EMAIL like '%gmail.com'
+
+
+--- exercises on above dataset 
+-----------------------------------------
+/* name of the member who has issued a book which is not placed on any rack*/
+select member_name
+from lms_members lm inner join lms_book_issue iss on (lm.member_id = iss.member_id )
+    inner join lms_book_details bd  on (iss.book_code = bd.book_code)
+where bd.rack_num is null ;
+
+
+/* name of the supplier who has not supplied any book 
+and that supplier lives in PUNE/MUMBAI/DELHI*/
+
+select supplier_name
+from lms_suppliers_details sd left join lms_book_details bd on ( sd.supplier_id = bd.supplier_id)
+where bd.supplier_id is null and upper(address) in ('PUNE','MUMBAI','DELHI')
+
+select supplier_name
+from  lms_book_details bd right join lms_suppliers_details sd on ( sd.supplier_id = bd.supplier_id)
+where bd.supplier_id is null and upper(address) in ('PUNE','MUMBAI','DELHI')
+    
+/* Name of the book , edition , publication that have never been issued  */
+select book_title , book_edition , publication
+from lms_book_details bd left join lms_book_issue iss on (bd.book_code = iss.book_code)
+where iss.book_issue_no is null 
+
+/* Name of the book , edition , publication that have been issued to members
+who have enrolled after 01-01-1999*/
+
+    select distinct book_title , book_edition , publication
+from lms_book_details bd inner join lms_book_issue iss on (bd.book_code = iss.book_code)
+    inner join lms_members lm on ( lm.member_id = iss.member_id)
+where date_register > to_date('01-01-1999','dd-mm-yyyy');
+
+/* Name of the members who have issued a book later than 01-01-2000*/
+
+select distinct member_name 
+from lms_members lm inner join lms_book_issue iss on ( lm.member_id = iss.member_id)
+where date_issue >  to_date('01-01-2000','dd-mm-yyyy');
+
+/* Name of the members who have issued a book and such that book supplier belongs to PUNE/MUMBAI/DELHI/CHENNAI*/
+
+select distinct member_name 
+from lms_members lm inner join lms_book_issue iss on ( lm.member_id = iss.member_id)
+    inner join lms_book_details bd on ( bd.book_code = iss.book_code)
+    inner join lms_suppliers_details sd on ( sd.supplier_id = bd.supplier_id )
+where upper(address) in ('PUNE','MUMBAI','DELHI','CHENNAI');
+
+/* Name of the members who have issued a book from the publication "The MIT Press" */
+
+select distinct member_name
+from lms_members lm inner join lms_book_issue iss on ( lm.member_id = iss.member_id)
+inner join lms_book_details bd on ( bd.book_code = iss.book_code)
+where publication = 'The MIT Press';
+
+
+
+------------------------------
+Group by  and Having clause 
+-----------------------------
+
+-- group by demo 
+
+select count(*)
+from lms_members 
+
+--
+select MEMBERSHIP_STATUS,count(*)
+from lms_members 
+group by MEMBERSHIP_STATUS;
+--
+select MEMBERSHIP_STATUS,city,count(*)
+from lms_members
+group by MEMBERSHIP_STATUS , city 
+having count(*) > 2
+
+-- string functions
+----------------- String Functions in Oracle ---------------------
+-- https://www.oracletutorial.com/oracle-string-functions/
+------------------------------------------------------------------
+
+-- INSTR(string , substring [, start_position [, occurrence]])
+SELECT  INSTR( 'This is a playlist', 'is' ) substring_location FROM   dual;
+SELECT  INSTR( 'This is a playlist', 'is',1,1 ) substring_location FROM   dual;
+SELECT  INSTR( 'This is a playlist', 'is',1,2 ) substring_location FROM   dual;
+SELECT  INSTR( 'This is a playlist', 'is',1,2 ) substring_location FROM   dual;
+
+-- SUBSTR( str, start_position [, substring_length, [, occurrence ]] );
+SELECT  SUBSTR( 'Oracle Substring', 1, 6 ) SUBSTRING FROM   dual;
+SELECT  SUBSTR( 'Oracle Substring', 1, 3 ) SUBSTRING FROM   dual;
+SELECT  SUBSTR( 'Oracle Substring', -3, 3 ) SUBSTRING FROM   dual;
+
+-------------------
+Full Fledged DEMO
+-------------------
+/* count of no of members in each city */
+select city , count(*)
+from lms_members 
+group by city;
+
+/* count of members against their membership_status */
+status     cnt
+Temporary   12
+Permanant   13
+
+select membership_status status, count(*) cnt
+from lms_members 
+group by membership_status;
+
+/* count of suppliers who stay in PUNE/MUMBAI/DELHI against their city  */
+select address , count(*) cnt_of_suppliers
+from lms_suppliers_details 
+where address in ('PUNE','MUMBAI','DELHI')
+group by address
+
+/* number of books in each category that are placed in rack_num A1/A2/A3 */
+select category , count(*) cnt_against_category
+from lms_book_details
+where rack_num in ('A1','A2','A3')
+group by category
+
+/* number of books issued in respective months for the month of APRIL/MAY  */
+select decode(extract(month from date_issue),4,'April' , 5 , 'May') month , count(*) no_of_books
+from lms_book_issue iss
+where extract(month from date_issue) in (4,5)
+group by extract(month from date_issue)
+
+
+
