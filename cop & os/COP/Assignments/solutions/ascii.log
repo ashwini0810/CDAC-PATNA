@@ -1,0 +1,15 @@
+
+function getASCIICode(char)
+{
+          return  char.charCodeAt();
+
+}
+console.log(getASCIICode('a'));
+
+
+
+
+
+
+output :
+ascii.js:6 97

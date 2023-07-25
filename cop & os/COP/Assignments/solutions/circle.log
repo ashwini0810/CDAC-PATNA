@@ -1,0 +1,17 @@
+
+function areaOfCircle(r)
+{
+    let area 
+    area = 3.14*r*r
+    return area;
+}
+console.log( areaOfCircle(8));
+
+
+
+
+
+
+output:
+
+circle.js:7 200.96

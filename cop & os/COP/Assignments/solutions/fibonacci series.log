@@ -1,0 +1,50 @@
+function Fib(num)
+    {
+           let num = 20
+            let prev = 0
+            let curr = 1
+            console.log(prev)
+            console.log(curr)
+            for (let i =2; i<n; i++)
+            {
+                let next
+                next = (prev + curr)
+                prev = curr
+                curr = next
+                console.log(curr)
+
+            }
+        }
+        console.log(Fib(20))
+
+
+
+
+
+
+
+
+
+
+
+ hello.js:6 0
+hello.js:7 1
+hello.js:14 1
+hello.js:14 2
+hello.js:14 3
+hello.js:14 5
+hello.js:14 8
+hello.js:14 13
+hello.js:14 21
+hello.js:14 34
+hello.js:14 55
+hello.js:14 89
+hello.js:14 144
+hello.js:14 233
+hello.js:14 377
+hello.js:14 610
+hello.js:14 987
+hello.js:14 1597
+hello.js:14 2584
+hello.js:14 4181
+hello.js:17 undefined

@@ -1,0 +1,16 @@
+
+
+function compoundIntrest(principal,rate,time)
+{
+      let ci = principal *(1+rate/100)**time
+       return ci;
+       }
+         console.log(compoundIntrest(1000,100,10));
+
+
+
+
+
+output :
+
+compound.js:6 1024000

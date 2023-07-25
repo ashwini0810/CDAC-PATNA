@@ -1,0 +1,12 @@
+function checkIFodd(num)
+{
+    return num%2!=0;
+}
+console.log(checkIFodd(15));
+
+
+
+
+
+output :
+odd .js:5 true
