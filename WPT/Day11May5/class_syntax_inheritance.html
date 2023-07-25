@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		class CDAC{
+			constructor(){
+				this.orgName = "CDAC"
+			}
+			getGrade(){
+				console.log("CDAC CLASS")
+				if(this.marks > 80){
+					return "A"
+				}else{
+					return "F"
+				}
+			}
+		}
+
+		class Student extends CDAC{
+			constructor(prn, name, marks){
+				super() //Compulsary because super calls parent class constructor
+				this.name = name
+				this.prn = prn
+				this.marks = marks
+			}
+			getGrade(){
+				console.log("STUDENT CLASS")
+				if(this.marks > 80){
+					return "A"
+				}else if(this.marks > 60){
+					return "B"
+				}else{
+					return "F"
+				}
+			}
+		}
+		var std1 = new Student(1, "Siddhant", 100) //->Student -> Object()
+		var std2 = new Student(2, "Anubhav", 80)
+		var std3 = new Student(3, "Rajat", 70)
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

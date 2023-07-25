@@ -1,0 +1,32 @@
+->Document object model
+
+<html>
+	<head>
+		<title>Sample</title>
+	</head>
+	<body>
+		<p>This <span>is</span> para</p>
+		<h1>this is heading</h1>
+	</body>
+</html>
+
+document:{
+	...
+	children:[{
+		HTML
+		children:[{
+			HEAD
+			children:[{TITLE}]
+		},{
+			BODY
+			children:[
+				{P
+					children:[{SPAN}]
+				},
+				{H1}
+			]
+		}]
+		....
+	}]
+	...
+}

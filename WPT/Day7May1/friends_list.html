@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Friends List</title>
+	<script type="text/javascript">
+		
+		var arr = []
+		for(var i = 0 ; i < 3; i++){
+			var name = prompt("Enter name")
+			arr.push(name)
+		}
+		var htmlStr = "<ol>"
+
+		for(var i = 0; i < arr.length; i++){
+			//document.write("<h2>"+arr[i] + "</h2>") // <h2>Anubhav</h2>
+			htmlStr = htmlStr + "<li>" +arr[i] +"</li>" //<ol><li>Anubhav</li><li>Siddhant</li>
+		}
+		htmlStr = htmlStr+"</ol>" //  
+		document.write(htmlStr)
+		/*
+			arr = ["Anubhav","Siddhant", "Rajat", "Rahul"]
+			htmlStr=<ol><li>Anubhav</li><li>Siddhant</li><li>Rajat</li><li>Rahul</li></ol>
+			i=1
+
+		*/
+		/*
+			<ol>
+				<li>anubhav</li>
+				<li>Siddhant</li>
+				<li>Rajat</li>
+				<li>Rahul</li>
+			</ol>
+
+		*/
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

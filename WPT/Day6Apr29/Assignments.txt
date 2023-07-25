@@ -1,0 +1,7 @@
+1. https://getbootstrap.com/docs/5.3/examples/pricing/
+2. Complete login.png image 
+3. https://getbootstrap.com/docs/5.3/examples/checkout/
+
+
+Optional:
+https://getbootstrap.com/docs/5.3/examples/carousel/
