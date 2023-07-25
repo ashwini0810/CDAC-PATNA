@@ -1,0 +1,24 @@
+
+	Note : Use Eclipse Now onwards for Lab 
+
+1) Create class Student 
+
+	with 3 variables of int  to accept marks 
+	name
+
+	method to calculate percentage and display grade of Student 
+
+2) Create class Employee 
+	
+	int empId;
+	float basicSal;
+	String firstName , lastName;
+
+	write 1) default Construtor 
+	          2)  parametrised Construtor with 2 , 4 parameters
+
+	Write AcceptData and ShowData Methods 
+	
+	Create Employee Object and call methods
+		
+
