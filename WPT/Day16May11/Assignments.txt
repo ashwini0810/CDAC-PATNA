@@ -1,6 +1,0 @@
-1.Break Day15 react assignments into more components and use props.
-
-2.Complete Fruit and Movies assignment code with bootstrap
-
-3.Complete fruit code with Context(use my component structure)
-4.Complete Movies with context (Use my component structure)

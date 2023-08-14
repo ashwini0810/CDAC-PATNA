@@ -1,9 +1,0 @@
-Todo-list:
-1.Add Task (Task name,task end time,created by, priority(High, medium, low))
-2.List Task
-3.Delete Task
-4.Update the status of the Task //Not done yet
-
-->By default Frontend should show the list
-->There should be button if user click on that open the add task part
-->Each task should have there own delete button and update status button
