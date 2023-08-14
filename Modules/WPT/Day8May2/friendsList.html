@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Friends</title>
+	<script type="text/javascript">
+		function greeting(){
+			var name = document.getElementById("name").value
+			document.getElementById("greet").innerHTML = "Welcome "+name
+		}
+	</script>
+</head>
+<body>
+	Enter name: <input type="text" id="name">
+	<button onclick="greeting()">Click Me</button>
+	<h2 id ="greet"></h2>
+</body>
+</html>

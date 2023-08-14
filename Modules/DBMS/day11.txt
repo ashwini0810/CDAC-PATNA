@@ -1,0 +1,128 @@
+/*
+----------------------------------------------------
+DEMO -- Update the inserted documents 
+----------------------------------------------------
+Update -- updateOne({where clause } , {set clause} , {flags like upsert })
+		  updateMany({where clause } , {set clause} , {flags like upsert })
+
+
+*/
+
+use lms;
+// update my_first_collection  set my_third_field = 'Updated' // Update Many
+db.my_first_collection.updateOne({},{$set : {my_third_field : "Updated" } })
+db.my_first_collection.updateMany({},{$set : {my_fourth_field : "Updated_again" } })
+db.my_first_collection.updateMany({},{$set : {my_fifth_field : "Updated_here_again" } }) 
+
+// update members collection set status = 'Temporary ' for all members who belong to Pune (CI)
+
+
+// casesensitive updates 
+//  where city = 'pune'
+db.LMS_MEMBERS.updateMany({CITY:"pune"},{$set:{MEMBERSHIP_STATUS:"Temporary"} });
+//  where city = 'Pune'
+db.LMS_MEMBERS.updateMany({CITY:"Pune"},{$set:{MEMBERSHIP_STATUS:"Temporary"} });
+//  where city = 'PUNE'
+db.LMS_MEMBERS.updateMany({CITY:"PUNE"},{$set:{MEMBERSHIP_STATUS:"Temporary_temp"} });
+
+// caseINsenstive updates 
+//  where lower(city) = 'pune'
+db.LMS_MEMBERS.updateMany({CITY:/pune/i},{$set:{MEMBERSHIP_STATUS:"Temporary"} });
+//  where lower(city) = 'pune'
+db.LMS_MEMBERS.find({CITY:/pune/i},{});
+
+// Upsert to true 
+/*
+update LMS_MEMBERS set MEMBERSHIP_STATUS="Permanent",MEMBER_NAME='Bogus_member'
+where CITY = "BOGUS_CITY" ;
+*/
+db.LMS_MEMBERS.updateMany({CITY:"BOGUS_CITY"},{$set:{MEMBERSHIP_STATUS:"Permanent" , MEMBER_NAME : 'Bogus_member'} });
+db.LMS_MEMBERS.updateMany({CITY:"BOGUS_CITY"},{$set:{MEMBERSHIP_STATUS:"Permanent" , MEMBER_NAME : 'Bogus_member'} },{upsert : true});
+
+db.LMS_MEMBERS.find({CITY:"BOGUS_CITY"},{});
+
+// what if i want to set the other fields as well
+db.LMS_MEMBERS.deleteMany({CITY:"BOGUS_CITY"});
+ 
+db.LMS_MEMBERS.updateMany
+(
+{CITY:"BOGUS_CITY"},
+{
+$set:{MEMBERSHIP_STATUS:"Permanent" , MEMBER_NAME : 'Bogus_member'} ,
+$setOnInsert: { "MEMBER_ID" : "BOGUS_ENTRY", "DATE_REGISTER" : "" ,"DATE_EXPIRE" :""  }
+},
+{upsert : true}
+);
+
+
+
+// update book details 
+// and set edition number = 10 
+//for all books with python category  
+
+/* update lms_book_details  set book_edition = 10 
+where lower(category) = 'python'
+*/
+
+db.LMS_BOOK_DETAILS.updateMany({CATEGORY : /python/i},{$set : {BOOK_EDITION : NumberInt(10.0)}})
+db.LMS_BOOK_DETAILS.find({CATEGORY : /python/i},{});
+
+// update book details and set edition number = 15 and price 10,000 for all books with python category
+// update lms_book_details set edition = 15 , price = 10000 where category   = 'python';
+
+db.LMS_BOOK_DETAILS.updateMany({CATEGORY : /python/i},{$set : {BOOK_EDITION : NumberInt(15) , PRICE : NumberInt(10000)}})
+
+// update book details and set edition number = 16 and price 20,000 
+// for all books with python category and author name is "Krishna Rungta" (CI) 
+
+// where lower(category) = 'python' and lower(author) = 'krishna rungta'
+db.LMS_BOOK_DETAILS.updateMany({CATEGORY : /python/i , AUTHOR : /krishna rungta/i},{$set : {BOOK_EDITION : NumberInt(16) , PRICE : NumberInt(20000)}})
+
+// alternatively you can use the verbose syntax for and
+// $and: [{},{},{}] 
+db.LMS_BOOK_DETAILS.updateMany({$and: [{CATEGORY : /python/i },{AUTHOR : /krishna rungta/i}] },{$set : {BOOK_EDITION : NumberInt(23) , PRICE : NumberInt(2000)}})
+
+// update book details and set edition number = 20 and price 40,000 
+// for all books with category python or java (CI) 
+
+// where lower(category) = 'python'  or lower(category) = 'java'
+// where lower(category) in ('python','java')
+// $or : [{},{},{}] 
+
+db.LMS_BOOK_DETAILS.find({$or : [{CATEGORY : /python/i },{CATEGORY : /java/i}]},{});
+db.LMS_BOOK_DETAILS.updateMany({$or : [{CATEGORY : /python/i },{CATEGORY : /java/i}]},{$set : {BOOK_EDITION : NumberInt(20) , PRICE : NumberInt(40000)}})
+
+// increment the price by 100.00 rs for each book
+// update lms_book_details set price = price + 100 ;
+
+db.LMS_BOOK_DETAILS.find({},{});
+db.LMS_BOOK_DETAILS.updateMany({},{$inc: {PRICE : 100.00 }})
+
+// convert the price which is decimal number to integer
+// set price = to_number(price) 
+//  db.LMS_BOOK_DETAILS.updateMany({},{$set: {PRICE : NumberInt(PRICE) }})
+
+db.LMS_BOOK_DETAILS.find({}).forEach(
+        function(doc){
+            db.LMS_BOOK_DETAILS.updateOne({_id: doc._id}, {$set: {PRICE: NumberInt(doc.PRICE) }});
+        }
+        );
+
+
+
+
+
+
+
+
+
+// FIND() FUNCTION AND $EXPR       
+// give me all books where price > base_price          
+db.LMS_BOOK_DETAILS.updateMany({}, {$set: {BASE_PRICE: NumberInt(5000) }});
+db.LMS_BOOK_DETAILS.updateMany({CATEGORY : "Python"}, {$set: {BASE_PRICE: NumberInt(1000) }});
+db.LMS_BOOK_DETAILS.updateMany({CATEGORY : "JAVA"}, {$set: {BASE_PRICE: NumberInt(500) }});
+
+// db.LMS_BOOK_DETAILS.find({PRICE : BASE_PRICE },{});
+// { $expr: { $gt: [ "$PRICE" , "$BASE_PRICE" ] } }
+
+db.LMS_BOOK_DETAILS.find({ $expr: { $gt: [ "$PRICE" , "$BASE_PRICE" ] } },{});		

@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>Flex demo</title>
+        <style>
+                .container{
+                    background-color : yellow;
+                }
+                .main-block{
+                    height:400px;
+                    width:800px;
+                    border : 3px solid black;  
+                    display:flex;  
+                    flex-direction:row;
+                    flex-wrap:wrap;  
+                    justify-content:center;
+                    align-items:center;          
+                    gap:40px;
+                    
+                }
+                .product{
+                    border: 1px solid red; 
+                     height:80px;
+                     width:80px;               
+                }
+                .product2{
+                     border: 1px solid red; 
+                     height:80px;
+                     width:80px; 
+                    flex-grow:1;              
+                }
+                .myproduct{
+                    color : red;                
+                }
+                .my{
+                    background-color: green;            
+                }
+        </style>
+    </head>
+<body>
+    <div class="main-block container">
+        <div class="product">Product 1</div>
+        <div class="product2 myproduct my">Product 2</div>
+        <div class="product">Product 3</div>
+        <div class="product my">Product 4</div>
+        <!--<div class="product">Product 5</div>
+        <div class="product">Product 6</div>
+        <div class="product">Product 7</div>
+        <div class="product">Product 8</div>
+        <div class="product">Product 9</div>
+        <div class="product">Product 10</div>
+        <div class="product">Product 11</div>
+        <div class="product">Product 12</div>
+        <div class="product">Product 13</div>-->
+    </div>
+</body>
+</html>

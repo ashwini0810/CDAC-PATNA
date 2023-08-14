@@ -1,0 +1,44 @@
+----------------------------------------------------------------------
+Exercise 01 Solution -- Constraints 
+---------------------------------------------------------------------
+drop table lms_members;
+create table lms_members
+(
+Member_id varchar2(100),
+Member_name varchar2 (100) constraint cons4 not null constraint cons4_1 unique ,
+City varchar2 (100),
+Date_register date,
+Date_expire date constraint cons3 not null,
+Membership_status varchar2 (100),
+constraint cons1 primary key (Member_id),
+CONSTRAINT cons2 CHECK(Date_register > to_date('01-01-2022','dd-mm-yyyy'))
+);
+
+
+select * from user_constraints where table_name = 'LMS_MEMBERS';
+ALTER TABLE lms_members drop constraint cons1;
+ALTER TABLE lms_members drop constraint cons2;
+ALTER TABLE lms_members drop constraint cons3;
+ALTER TABLE lms_members drop constraint cons4;
+ALTER TABLE lms_members drop constraint cons4_1;
+
+ALTER TABLE lms_members add constraint cons4_1 unique (Member_name);
+ALTER TABLE lms_members add constraint cons1 primary key(Member_id);
+ALTER TABLE lms_members add constraint cons2 CHECK(DATE_REGISTER > to_date('01-01-2022','dd-mm-yyyy'));
+ALTER TABLE lms_members MODIFY (Date_expire constraint cons3 NOT NULL);
+ALTER TABLE lms_members MODIFY (Member_name constraint cons4 NOT NULL);
+
+
+select * from lms_members ;
+
+delete from lms_members;
+
+INSERT INTO lms_members (Member_id,Member_name,City,Date_register,Date_expire,Membership_status) VALUES ('LM009','Nikita','Delhi',to_date('12-12-2022','dd-mm-yyyy'),to_date('12-12-2023','dd-mm-yyyy'),'Temporary');
+INSERT INTO lms_members (Member_id,Member_name,City,Date_register,Date_expire,Membership_status) VALUES ('LM009','Niki','Pune',to_date('02-12-2022','dd-mm-yyyy'),to_date('02-12-2023','dd--mm-yyyy'),'Temporary');
+INSERT INTO lms_members (Member_id,Member_name,City,Date_register,Date_expire,Membership_status) VALUES (null,'Rohit','Mumbai',to_date('09-12-2022','dd-mm-yyyy'),to_date('09-12-2023','dd--mm-yyyy'),'Temporary');
+INSERT INTO lms_members (Member_id,Member_name,City,Date_register,Date_expire,Membership_status) VALUES ('LM027','Priti','USA',to_date('01-06-2018','dd-mm-yyyy'),to_date('11-05-2023','dd-mm-yyyy'),'Temporary');
+INSERT INTO lms_members (Member_id,Member_name,City,Date_register,Date_expire,Membership_status) VALUES ('LM020','Supriya','Delhi',to_date('12-12-2022','dd-mm-yyyy'),null,'Temporary');
+INSERT INTO lms_members (Member_id,Member_name,City,Date_register,Date_expire,Membership_status) VALUES ('LM024','Gaurav','Delhi',to_date('12-06-2022','dd-mm-yyyy'),to_date('12-05-2023','dd-mm-yyyy'),'Temporary');
+INSERT INTO lms_members (Member_id,Member_name,City,Date_register,Date_expire,Membership_status) VALUES ('LM025','Gaurav','Pune',to_date('22-06-2022','dd-mm-yyyy'),to_date('22-05-2023','dd-mm-yyyy'),'Temporary');
+INSERT INTO lms_members (Member_id,Member_name,City,Date_register,Date_expire,Membership_status) VALUES ('LM026',null,'nepal',to_date('02-06-2022','dd-mm-yyyy'),to_date('29-05-2023','dd-mm-yyyy'),'Permanent');
+INSERT INTO lms_members (Member_id,Member_name,City,Date_register,Date_expire,Membership_status) VALUES ('LM032','Sehwag','India',to_date('02-06-2022','dd-mm-yyyy'),to_date('29-05-2023','dd-mm-yyyy'),'Permanent');

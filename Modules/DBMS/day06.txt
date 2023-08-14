@@ -1,0 +1,175 @@
+------------------------
+
+Today's Agenda:
+-----------------
+what Order by is ? What is the need for it ?
+Demo 
+Hand on session 
+
+----------------
+select 
+from 
+where
+group by 
+having
+order by -- data that is projected is ordered using this clause
+
+------------------------------------------------
+Consider a table with single column for order by 
+------------------------------------------------
+table1
+col1
+1
+2
+3
+4
+null
+
+select col1 from table1 ;
+col1     col1     col1
+1        2        null
+2        1        4
+3        3        3
+4        4        2
+null     null         1
+
+order by <expression> asc/desc nulls first/nulls last
+ex : order by col1 asc nulls last  
+	 order by col1 desc nulls first 
+	 order by col1 [asc nulls last] // default 
+	 order by col1 desc [nulls first] // default 
+
+
+------------------------
+Sql creates for above example 
+------------------------
+create table table1
+(
+col1 number
+);
+
+insert into table1(col1) values (1);
+insert into table1(col1) values (null);
+insert into table1(col1) values (3);
+insert into table1(col1) values (2);
+insert into table1(col1) values (4);
+
+
+select * from table1;
+-- default (asc nulls last)
+select * from table1 order by col1;
+select * from table1 order by col1 asc ;
+select * from table1 order by col1 asc nulls last;
+
+-- default with desc is nulls first 
+select * from table1 order by col1 desc;
+select * from table1 order by col1 desc nulls first;
+select * from table1 order by col1 desc nulls last;
+
+
+----------------------------------------------------------------------------------
+Consider a table with two column for order by [ Sql creates]
+----------------------------------------------------
+drop table table1;
+create table table1
+(
+col1 number,
+col2 number
+);
+
+insert into table1(col1,col2) values (1,10);
+insert into table1(col1,col2) values (1,20);
+insert into table1(col1,col2) values (1,30);
+insert into table1(col1,col2) values (null,10);
+insert into table1(col1,col2) values (null,30);
+insert into table1(col1,col2) values (null,20);
+insert into table1(col1,col2) values (3,30);
+insert into table1(col1,col2) values (3,20);
+insert into table1(col1,col2) values (3,10);
+
+
+select * from table1;
+-- default (asc nulls last)
+select * from table1 order by col1;
+select * from table1 order by col1 asc ;
+select * from table1 order by col1 asc nulls last;
+
+-- default with desc is nulls first 
+select * from table1 order by col1 desc;
+select * from table1 order by col1 desc nulls first;
+select * from table1 order by col1 desc nulls last;
+
+-- default (asc nulls last)
+select * from table1 order by col1,col2;
+select * from table1 order by col1 asc,col2 asc ;
+select * from table1 order by col1 asc nulls last , col2 asc nulls last;
+
+select col2,col1 from table1 order by col2,col1;
+select col2,col1 from table1 order by col2 asc,col1 asc ;
+select col2,col1 from table1 order by col2 asc nulls last , col1 asc nulls last;
+
+
+-- default with desc is nulls first 
+select * from table1 order by col1 desc,col2 desc;
+select * from table1 order by col1 desc nulls first,col2 desc nulls first;
+
+-- any permutation is possible 
+select * from table1 order by col1 desc nulls last ,col2 asc;
+
+/* name of the members ordered on their names ascending */
+select * from lms_members order by member_name ;
+/* name of the members ordered on their status asc and member_name desc */    
+select * from lms_members order by membership_status asc , member_name desc;
+
+/* books ordered on supplier_id desc */
+select * from lms_book_details order by supplier_id desc nulls last;
+
+/* list the book_name and issuance_date , date_of_expected_return 
+Such that the books that are to be returned at the earliest are seen at the top */
+    
+select book_title,date_issue,date_return
+from lms_book_details bd inner join  lms_book_issue iss on (bd.book_code = iss.book_code)
+order by date_return asc nulls last;
+
+/*  list all the members such that the oldest member (the very first member to my LMS) 
+    of my LMS appears at the top
+*/ 
+select * 
+from lms_members 
+order by date_register asc nulls last ;
+
+/*  list all the members such that the longest duration of membership member(as of today)
+    appears at the top and the member is active right now  */ 
+
+select * 
+from lms_members 
+where sysdate < date_expire
+order by date_register asc nulls last ;
+
+/* provide the supplier name , their city , no_of_books supplied
+  based on the person who has supplied  most books comes at the top
+  note : we would have suppliers who have not supplied any books at the bottom of the output
+  and the count would be 0*/ 
+
+select sd.supplier_id,supplier_name , address , count( bd.supplier_id) cnt
+from lms_suppliers_details sd  left join  lms_book_details bd on (sd.supplier_id= bd.supplier_id)
+group by sd.supplier_id,supplier_name,address
+order by count( bd.supplier_id)  desc;
+
+/* provide the book codes and book names based on the least issued book comes at the top 
+  note : we would have books who have not been issued at the top of the output */
+
+select bd.book_code,bd.book_title, count(iss.book_code) from
+lms_book_Details bd left join lms_book_issue iss on (bd.book_code = iss.book_code)
+group by bd.book_code,bd.book_title
+order by count(iss.book_code) asc  ;
+
+
+/* provide the name of the member,total_fine based on the most fined member comes at the top
+  note : we would have members who have not been issued books at the bottom of the output */
+
+select member_name , decode(sum(fine_amount),null,0, sum(fine_amount)) total_fine
+from lms_members lm left join lms_book_issue iss on ( lm.member_id = iss.member_id )    
+    left join lms_fine_details fd on ( fd.fine_range = iss.fine_range)
+group by member_name    
+order by decode(sum(fine_amount),null,0, sum(fine_amount)) desc       

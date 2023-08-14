@@ -1,0 +1,13 @@
+CSS Properties:
+border : 1px solid red
+margin-left
+margin-top
+margin-bottom
+margin-right
+height
+width
+color
+background-color
+font-size:30px
+font-weight: bold|bolder
+

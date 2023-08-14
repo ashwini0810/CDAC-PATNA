@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Table layout</title>
+    </head>
+<body>
+    <form>
+        <table cellspacing=10>
+            <tr>
+              <td>Name</td>  
+              <td> <input type="text" placeholder="Name here"> </td>
+            </tr>
+            <tr>
+                <td>Date of birth</td>
+                <td><input type="date"></td>
+            </tr>
+            <tr>
+                   <td>Gender</td>
+                   <td>
+                        <input type="radio" name="gender"> Male
+                        <br>
+                        <input type="radio" name="gender"> Female
+                   </td>
+            </tr>
+            <tr>
+                <td>State</td>
+                <td>
+                    <select>
+                        <option>MH</option>
+                        <option selected>TN</option>
+                        <option>HP</option>
+                        <option>H</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Comment</td>
+                <td>
+                    <textarea rows=4 cols=20></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=2 align="center">
+                    <button>Save</button>                
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

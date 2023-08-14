@@ -1,0 +1,51 @@
+
+------------------------------------------------------------
+Exercise Question 1 :
+--------------------------------------------------------
+a) Create table named lms_members(MEMBER_ID varchar2,MEMBER_NAME varchar2 , CITY varchar2, DATE_REGISTER date , DATE_EXPIRE date,MEMBERSHIP_STATUS varchar2 )
+b) Drop table 
+c) create the table back again -- Create table named lms_members(MEMBER_ID varchar2,MEMBER_NAME varchar2 , CITY varchar2, DATE_REGISTER date , DATE_EXPIRE date,MEMBERSHIP_STATUS varchar2 )
+d) Alter the table 
+  i) add two more columns ADDRESS varchar2(200) , CONTACT number
+  ii) Modify the datatype of existing Address column to be varchar2(3999)
+  iii) rename the address column name to member_address
+  iv) drop the contact column
+   v) rename the table to lms_members_practice
+
+e) Insert following data -- use to_date('12-12-2012','dd-mm-yyyy') to store the hardcoded date
+ 
+LM009	Nikita	Delhi	12-12-2012	12-12-2021	Temporary	rajori road 
+LM020	Supriya	Delhi	12-12-2012	12-12-2021	Temporary	uttam nagar
+LM024	Gaurav	Delhi	12-06-2018	12-05-2020	Temporary	nawada
+f) delete all the rows
+g) insert the data back again in point (e) 
+h) update for all rows Address column to Karnataka
+
+Reference : https://www.oracletutorial.com/oracle-basics/oracle-date-format/
+
+f)  TCL  -- please set your expectations by filling in ? in [? rows] before executing your code 
+   <case 1>  -- rollback
+	fire select to see current data in the table lms_members [? rows]
+	insert : LM011	Gaurav	Delhi	12-12-2012	12-12-2021	Temporary	rajori road
+	fire select to see current data in the table lms_members [? rows]
+	rollback;
+	fire select to see current data in the table lms_members [? rows]
+
+   <case 2> -- commit
+	fire select to see current data in the table [? rows]
+	insert : LM012	Gauri	Delhi	12-12-2012	12-12-2021	Temporary	uttam nagar
+	fire select to see current data in the table [? rows]
+	commit;
+	fire select to see current data in the table [? rows]
+
+   <case 3> -- rollback to savepoint 
+	fire select to see current data in the table [? rows]
+	create a savepoint named s1
+	insert : LM013	Pratik	Delhi	12-12-2012	12-12-2021	Temporary	uttam nagar
+	create a savepoint named s2
+	insert : LM014	Deepak	Delhi	12-12-2012	12-12-2021	Temporary	uttam nagar
+	fire select to see current data in the table [? rows]
+	rollback to savepoint s2;
+	fire select to see current data in the table [? rows]
+ 
+ 

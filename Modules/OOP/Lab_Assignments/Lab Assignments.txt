@@ -1,0 +1,32 @@
+
+	Notebook 
+
+	// set path
+
+
+	1) write a code to check prime number using class and methods 
+
+	2)  write a program for fibonacci series to n number 
+
+	3)  Create Calculator Program 
+		acceptData()
+		addition()
+		subtraction().
+
+		division()
+		multiplication()
+
+	after accepting data take choice from user and display required output 
+
+	4)  write a program to show even number within range accepted from 	user 
+
+	5)  Find the factorial of a number
+	6) Check if a number is palindrome or not
+
+	7) Find square root of a number without sqrt method
+	8) Check Armstrong number
+
+	9)Calculate compound interest
+	10) Calculate power of a number
+	11) Swap two numbers
+	12) Calculate area of rectangle

@@ -1,0 +1,38 @@
+
+1) write  a java program to find nth prime number 
+
+2) write  a java program to display altrnate prime numbers between 1 to 100
+
+3) write a program to accept 10 numbers from user and display smallest and 
+largest number between them 
+
+4)Write a program to find GCD of 2 numbers using for loop and while loop 
+
+	  Example: Find the GCF of 12 and 8.
+
+	Solution:
+
+	Factors of 12: 1, 2, 3, 4, 6, 12
+
+	Factors of 8: 1, 2, 4, 8
+
+	Common Factors: 1, 2, 4
+
+	Greatest Common Factor: 4
+
+
+5) Write a program to check entered number is perfect square or not 
+
+
+6) Write a program to display even numbers between 1 to 11 
+	Using Java for Loop
+	Using nested-if Statement
+	Using while Loop
+
+7) Write a program to display  sum of n numbers 
+	Using Java for Loop
+	Using Java while Loop
+	Using Function
+	Using Java For each loop 
+
+8) accept 4 digits number from user and display in words

@@ -1,0 +1,112 @@
+---------------------------------------------
+EXERCISES on Crud
+------------------------------------------
+IPL 
+------
+Players --> p_name,dob, skill,is_oversea_player  medical_details(last_yoyo_date,is_passed), team_name
+Teams--> t_name,owner,budget, overseas_players(array which will contain overseas player)
+Scores --> p_name, skill, total_runs(if batting), total_wickets(if bowlers)
+
+-- Create the collections
+12 Players (6 Overseas, 6 Indian)
+3 teams 
+5 Scores
+
+"medical_details" : {"last_yoyo_date" : ISO() , is_passed : "Y"}
+"overseas_players" : [{"p_name" : "Gayle" },{"p_name" : "Smith" }]
+---------------------------------------------------------------------------------------
+
+// demonstrating how to access a embedded JSON field value 
+db.trial.insertMany(
+[
+{
+p_name: "GAURAV",
+"medical_details" : {"last_yoyo_date" : "01-01-2002" , is_passed : "Y"}
+},
+{
+p_name: "SAURAV",
+"medical_details" : {"last_yoyo_date" : "01-01-2002" , is_passed : "Y"}
+}
+]
+
+);
+
+// accessing embedded fields in code 
+db.trial.find({"p_name" : "GAURAV"},{});
+db.trial.find({"medical_details.is_passed": "Y"},{});
+
+------------------------------------------------------------------------------
+Update and Delete Exercise on our Cricket Data that we created in last step 
+------------------------------------------------------------------------------
+
+//  Update all players total_runs who are batsman to 1000 runs
+// Update all players total_wickets who are bowlers to 1000 wickets
+// update all players yoyo test passed status to failed 
+// add a new field named "category" to the Players collection with a default value of Outstanding
+// add a new field named "homeGround" to the Teams collection with the default value null
+// Update HomeGround field of Teams collection
+// for Delhi Capitals --> Delhi
+// for Mumbai Indians --> Mumbai
+// for Rajasthan Royals --> Rajasthan
+
+// Add a new field "no_of_centuries"  with a default value of 5 to all batsman
+// Add a new field "no_of_hatricks"  with a default value of 2 to all bowler
+// delete all players that belong to 'Delhi capitals'
+// delete players that were born before '01-12-1980'
+// delete any one player that belong to 'Mumbai Indians'
+// just adds value 1 to the budget
+// increase all the teams budget by 60
+
+
+----------------------------
+Solutions:
+----------------------------
+// Players Insert 
+db.Players.insertOne(
+            {
+              "_id" : "1",
+             "p_name" : "Rahul Dravid",
+             "date_of_birth" : ISODate("1976-05-01T00:00:00.000+0000"),
+             "skill" : "Batsman",
+             "is_oversea_player" : "No",
+             "medical_details" : {   "last_yoyo_date" : ISODate("2005-06-01T00:00:00.000+0000")
+                                      , is_passed : "Y"},
+             "team_name" : "Rajasthan Royals"
+           }
+);
+
+
+db.Teams.insertMany(
+[
+{
+              "_id" : "100",
+             "t_name" : "Delhi Capitals",
+             "owner" : "ACC Group",
+             "budget" : 800,
+             "overseas_players" : [{"p_name" : "Shane Watson"},{"p_name" : "Rabada"},{"p_name" : "David Warner"}]
+}]);
+
+  
+db.Scores.insertMany(
+[
+{
+             "p_name" : "Hardik Pandya",
+             "skill" : "All Rounder",
+             "total_runs" : "3500",
+              "total_wickets" : 22
+},
+{            
+            "p_name" : "Sachin Tendulkar",
+            "skill" : "Batsman",
+             "total_runs" : "4000",
+
+    
+},
+{
+             "p_name" : "Bhvaneshawar",
+             "skill" : "Bowler",
+              "total_wickets" : 30
+}
+]);
+			 
+

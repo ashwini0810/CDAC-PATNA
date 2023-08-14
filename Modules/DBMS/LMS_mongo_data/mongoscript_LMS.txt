@@ -1,0 +1,1198 @@
+use lms;
+db.LMS_BOOK_DETAILS.deleteMany({});
+db.LMS_BOOK_DETAILS.insertMany([
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459dff"), 
+    "BOOK_CODE" : "BL000001", 
+    "BOOK_TITLE" : "Java How To Do Program", 
+    "CATEGORY" : "JAVA", 
+    "AUTHOR" : "Paul J. Deitel", 
+    "PUBLICATION" : "Prentice Hall", 
+    "PUBLISH_DATE" : ISODate("1999-12-10T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(6), 
+    "PRICE" : NumberInt(600), 
+    "RACK_NUM" : "A1", 
+    "DATE_ARRIVAL" : ISODate("2011-05-10T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S01"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e00"), 
+    "BOOK_CODE" : "BL000002", 
+    "BOOK_TITLE" : "Java: The Complete Reference", 
+    "CATEGORY" : "JAVA", 
+    "AUTHOR" : "Herbert Schildt", 
+    "PUBLICATION" : "Tata Mcgraw Hill", 
+    "PUBLISH_DATE" : ISODate("2011-10-10T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(5), 
+    "PRICE" : NumberInt(750), 
+    "RACK_NUM" : "A1", 
+    "DATE_ARRIVAL" : ISODate("2011-05-10T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S03"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e01"), 
+    "BOOK_CODE" : "BL000003", 
+    "BOOK_TITLE" : "Java How To Do Program", 
+    "CATEGORY" : "JAVA", 
+    "AUTHOR" : "Paul J. Deitel", 
+    "PUBLICATION" : "Prentice Hall", 
+    "PUBLISH_DATE" : ISODate("1999-05-10T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(6), 
+    "PRICE" : NumberInt(600), 
+    "RACK_NUM" : "A1", 
+    "DATE_ARRIVAL" : ISODate("2012-05-10T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S01"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e02"), 
+    "BOOK_CODE" : "BL000004", 
+    "BOOK_TITLE" : "Java: The Complete Reference", 
+    "CATEGORY" : "JAVA", 
+    "AUTHOR" : "Herbert Schildt", 
+    "PUBLICATION" : "Tata Mcgraw Hill", 
+    "PUBLISH_DATE" : ISODate("2011-10-10T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(5), 
+    "PRICE" : NumberInt(750), 
+    "RACK_NUM" : "A1", 
+    "DATE_ARRIVAL" : ISODate("2012-05-11T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S01"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e03"), 
+    "BOOK_CODE" : "BL000005", 
+    "BOOK_TITLE" : "Java How To Do Program", 
+    "CATEGORY" : "JAVA", 
+    "AUTHOR" : "Paul J. Deitel", 
+    "PUBLICATION" : "Prentice Hall", 
+    "PUBLISH_DATE" : ISODate("1999-12-10T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(6), 
+    "PRICE" : NumberInt(600), 
+    "RACK_NUM" : "A1", 
+    "DATE_ARRIVAL" : ISODate("2012-05-11T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S01"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e04"), 
+    "BOOK_CODE" : "BL000006", 
+    "BOOK_TITLE" : "Java: The Complete Reference", 
+    "CATEGORY" : "JAVA", 
+    "AUTHOR" : "Herbert Schildt", 
+    "PUBLICATION" : "Tata Mcgraw Hill", 
+    "PUBLISH_DATE" : ISODate("2011-10-10T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(5), 
+    "PRICE" : NumberInt(750), 
+    "RACK_NUM" : "A1", 
+    "DATE_ARRIVAL" : ISODate("2012-05-12T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S03"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e05"), 
+    "BOOK_CODE" : "BL000007", 
+    "BOOK_TITLE" : "Let Us C", 
+    "CATEGORY" : "C", 
+    "AUTHOR" : "Yashavant Kanetkar", 
+    "PUBLICATION" : "BPB Publications", 
+    "PUBLISH_DATE" : ISODate("2010-12-11T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(9), 
+    "PRICE" : NumberInt(500), 
+    "RACK_NUM" : "A3", 
+    "DATE_ARRIVAL" : ISODate("2010-11-03T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S03"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e06"), 
+    "BOOK_CODE" : "BL000008", 
+    "BOOK_TITLE" : "Python Cookbook: Recipes for Mastering Python 3", 
+    "CATEGORY" : "Python", 
+    "AUTHOR" : "Brian K. Jones", 
+    "PUBLICATION" : "O'Reilly Media", 
+    "PUBLISH_DATE" : ISODate("2013-05-10T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(3), 
+    "PRICE" : NumberInt(350), 
+    "DATE_ARRIVAL" : ISODate("2019-06-10T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S02"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e07"), 
+    "BOOK_CODE" : "BL000009", 
+    "BOOK_TITLE" : "Learn Python in 1 Day", 
+    "CATEGORY" : "Python", 
+    "AUTHOR" : "Krishna Rungta", 
+    "PUBLICATION" : "Guru99", 
+    "PUBLISH_DATE" : ISODate("2016-07-19T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(1), 
+    "PRICE" : NumberInt(307), 
+    "RACK_NUM" : "A3", 
+    "DATE_ARRIVAL" : ISODate("2019-06-10T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S02"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e08"), 
+    "BOOK_CODE" : "BL000010", 
+    "BOOK_TITLE" : "Python Programming:An Introduction to Computer Science", 
+    "CATEGORY" : "Python", 
+    "AUTHOR" : "John M Zelle", 
+    "PUBLICATION" : "Ingram short title", 
+    "PUBLISH_DATE" : ISODate("2016-01-01T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(3), 
+    "PRICE" : NumberInt(1200), 
+    "SUPPLIER_ID" : "S03"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e09"), 
+    "BOOK_CODE" : "BL000011", 
+    "BOOK_TITLE" : "C# 8.0 and .NET Core 3.0 – Modern Cross-Platform Development", 
+    "CATEGORY" : "C#", 
+    "AUTHOR" : "Mark J. Price", 
+    "PUBLICATION" : "Packt Publishing", 
+    "PUBLISH_DATE" : ISODate("2019-10-31T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(4), 
+    "PRICE" : NumberInt(410), 
+    "RACK_NUM" : "A3", 
+    "DATE_ARRIVAL" : ISODate("2019-06-10T00:00:00.000+0000")
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e0a"), 
+    "BOOK_CODE" : "BL000012", 
+    "BOOK_TITLE" : "C# 8.0 Pocket Reference: Instant Help for C# 8.0 Programmers", 
+    "CATEGORY" : "C#", 
+    "AUTHOR" : "Joseph Albahari", 
+    "PUBLICATION" : "O'Reilly Media", 
+    "PUBLISH_DATE" : ISODate("2019-12-10T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(1), 
+    "PRICE" : NumberInt(890), 
+    "SUPPLIER_ID" : "S03"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e0b"), 
+    "BOOK_CODE" : "BL000013", 
+    "BOOK_TITLE" : "Agile Principles, Patterns, and Practices in C#", 
+    "CATEGORY" : "C#", 
+    "AUTHOR" : "Robert C. Martin", 
+    "PUBLICATION" : "Pearson", 
+    "PUBLISH_DATE" : ISODate("2006-06-20T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(5), 
+    "PRICE" : NumberInt(630), 
+    "DATE_ARRIVAL" : ISODate("2009-09-12T00:00:00.000+0000")
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e0c"), 
+    "BOOK_CODE" : "BL000014", 
+    "BOOK_TITLE" : "Clean Code: A Handbook of Agile Software Craftsmanship", 
+    "CATEGORY" : "FUNDAMENTALS", 
+    "AUTHOR" : "Robert C. Martin", 
+    "PUBLICATION" : "Prentice Hall", 
+    "PUBLISH_DATE" : ISODate("2018-05-20T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(1), 
+    "PRICE" : NumberInt(520), 
+    "RACK_NUM" : "A3", 
+    "DATE_ARRIVAL" : ISODate("2019-06-01T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S06"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e0d"), 
+    "BOOK_CODE" : "BL000015", 
+    "BOOK_TITLE" : "Introduction to Algorithms", 
+    "CATEGORY" : "ALGORITHMS", 
+    "AUTHOR" : "Thomas H. Cormen", 
+    "PUBLICATION" : "The MIT Press", 
+    "PUBLISH_DATE" : ISODate("2019-06-02T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(3), 
+    "PRICE" : NumberInt(1220), 
+    "RACK_NUM" : "A4", 
+    "DATE_ARRIVAL" : ISODate("2019-08-02T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S01"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e0e"), 
+    "BOOK_CODE" : "BL000016", 
+    "BOOK_TITLE" : "Structure and Interpretation of Computer Programs (SICP)", 
+    "CATEGORY" : "FUNDAMENTALS", 
+    "AUTHOR" : "Harold Abelson", 
+    "PUBLICATION" : "The MIT Press", 
+    "PUBLISH_DATE" : ISODate("2011-08-02T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(4), 
+    "PRICE" : NumberInt(1880), 
+    "RACK_NUM" : "A5", 
+    "DATE_ARRIVAL" : ISODate("2014-09-10T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S02"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e0f"), 
+    "BOOK_CODE" : "BL000017", 
+    "BOOK_TITLE" : "The Clean Coder: A Code of Conduct for Professional Programmers", 
+    "CATEGORY" : "FUNDAMENTALS", 
+    "AUTHOR" : "Robert C. Martin", 
+    "PUBLICATION" : "Prentice Hall", 
+    "PUBLISH_DATE" : ISODate("2015-06-02T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(5), 
+    "PRICE" : NumberInt(3000), 
+    "RACK_NUM" : "A6", 
+    "DATE_ARRIVAL" : ISODate("2019-02-10T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S06"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e10"), 
+    "BOOK_CODE" : "BL000018", 
+    "BOOK_TITLE" : "Code Complete: A Practical Handbook of Software Construction", 
+    "CATEGORY" : "FUNDAMENTALS", 
+    "AUTHOR" : "Steve McConnell", 
+    "PUBLICATION" : "Microsoft Press", 
+    "PUBLISH_DATE" : ISODate("2011-04-05T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(3), 
+    "PRICE" : NumberInt(4500), 
+    "RACK_NUM" : "A5", 
+    "DATE_ARRIVAL" : ISODate("2011-12-03T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S03"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e11"), 
+    "BOOK_CODE" : "BL000019", 
+    "BOOK_TITLE" : "Design Patterns: Elements of Reusable Object-Oriented Software", 
+    "CATEGORY" : "FUNDAMENTALS", 
+    "AUTHOR" : "Erich Gamma", 
+    "PUBLICATION" : "Addison-Wesley Professional", 
+    "PUBLISH_DATE" : ISODate("2001-01-02T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(1), 
+    "PRICE" : NumberInt(450), 
+    "RACK_NUM" : "A8", 
+    "DATE_ARRIVAL" : ISODate("2011-06-06T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S03"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e12"), 
+    "BOOK_CODE" : "BL000020", 
+    "BOOK_TITLE" : "The Pragmatic Programmer", 
+    "CATEGORY" : "FUNDAMENTALS", 
+    "AUTHOR" : "David Thomas", 
+    "PUBLICATION" : "Addison-Wesley Professional", 
+    "PUBLISH_DATE" : ISODate("2006-06-06T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(3), 
+    "PRICE" : NumberInt(750), 
+    "RACK_NUM" : "A9", 
+    "DATE_ARRIVAL" : ISODate("2011-12-12T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S03"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e13"), 
+    "BOOK_CODE" : "BL000021", 
+    "BOOK_TITLE" : "Head First Design Patterns: A Brain-Friendly Guide", 
+    "CATEGORY" : "JAVA", 
+    "AUTHOR" : "Eric Freeman", 
+    "PUBLICATION" : "O'Reilly Media", 
+    "PUBLISH_DATE" : ISODate("2005-05-05T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(1), 
+    "PRICE" : NumberInt(860), 
+    "RACK_NUM" : "A2", 
+    "DATE_ARRIVAL" : ISODate("2006-05-05T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S01"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e14"), 
+    "BOOK_CODE" : "BL000023", 
+    "BOOK_TITLE" : "Algorithms Unlocked", 
+    "CATEGORY" : "ALGORITHMS", 
+    "AUTHOR" : "Thomas H. Cormen", 
+    "PUBLICATION" : "The MIT Press", 
+    "PUBLISH_DATE" : ISODate("2012-12-02T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(2), 
+    "PRICE" : NumberInt(860), 
+    "RACK_NUM" : "A8", 
+    "DATE_ARRIVAL" : ISODate("2013-12-02T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S01"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e15"), 
+    "BOOK_CODE" : "BL000024", 
+    "BOOK_TITLE" : "The Algorithm Design Manual", 
+    "CATEGORY" : "ALGORITHMS", 
+    "AUTHOR" : "Steven S. Skiena", 
+    "PUBLICATION" : "Addison-Wesley Professional", 
+    "PUBLISH_DATE" : ISODate("2012-12-02T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(6), 
+    "PRICE" : NumberInt(456), 
+    "RACK_NUM" : "A6", 
+    "DATE_ARRIVAL" : ISODate("2013-12-02T00:00:00.000+0000")
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e16"), 
+    "BOOK_CODE" : "BL000025", 
+    "BOOK_TITLE" : "Algorithms", 
+    "CATEGORY" : "ALGORITHMS", 
+    "AUTHOR" : "Robert Sedgewick", 
+    "PUBLICATION" : "The MIT Press", 
+    "PUBLISH_DATE" : ISODate("2011-04-06T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(2), 
+    "PRICE" : NumberInt(630), 
+    "RACK_NUM" : "A3", 
+    "DATE_ARRIVAL" : ISODate("2013-12-02T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S02"
+},
+{ 
+    "_id" : ObjectId("5f5152c353f01c44d2459e17"), 
+    "BOOK_CODE" : "BL000026", 
+    "BOOK_TITLE" : "Advanced Data Structures", 
+    "CATEGORY" : "DATA STRUCTURES", 
+    "AUTHOR" : "Peter Brass", 
+    "PUBLICATION" : "The MIT Press", 
+    "PUBLISH_DATE" : ISODate("2008-08-08T00:00:00.000+0000"), 
+    "BOOK_EDITION" : NumberInt(6), 
+    "PRICE" : NumberInt(780), 
+    "RACK_NUM" : "A3", 
+    "DATE_ARRIVAL" : ISODate("2009-09-09T00:00:00.000+0000"), 
+    "SUPPLIER_ID" : "S05"
+}
+]);
+
+// FINE_DETAILS_DATA
+use lms;
+db.LMS_FINE_DETAILS.deleteMany({});
+db.LMS_FINE_DETAILS.insertMany([
+{ 
+    "_id" : ObjectId("5f51541653f01c44d2459e6b"), 
+    "FINE_RANGE" : "R1", 
+    "FINE_AMOUNT" : NumberInt(20), 
+    "MAX_DAYS_DELAYED" : NumberInt(5)
+},
+{ 
+    "_id" : ObjectId("5f51541653f01c44d2459e6c"), 
+    "FINE_RANGE" : "R2", 
+    "FINE_AMOUNT" : NumberInt(50), 
+    "MAX_DAYS_DELAYED" : NumberInt(10)
+},
+{ 
+    "_id" : ObjectId("5f51541653f01c44d2459e6d"), 
+    "FINE_RANGE" : "R3", 
+    "FINE_AMOUNT" : NumberInt(75), 
+    "MAX_DAYS_DELAYED" : NumberInt(15)
+},
+{ 
+    "_id" : ObjectId("5f51541653f01c44d2459e6e"), 
+    "FINE_RANGE" : "R4", 
+    "FINE_AMOUNT" : NumberInt(100), 
+    "MAX_DAYS_DELAYED" : NumberInt(20)
+},
+{ 
+    "_id" : ObjectId("5f51541653f01c44d2459e6f"), 
+    "FINE_RANGE" : "R5", 
+    "FINE_AMOUNT" : NumberInt(150), 
+    "MAX_DAYS_DELAYED" : NumberInt(25)
+},
+{ 
+    "_id" : ObjectId("5f51541653f01c44d2459e70"), 
+    "FINE_RANGE" : "R6", 
+    "FINE_AMOUNT" : NumberInt(200), 
+    "MAX_DAYS_DELAYED" : NumberInt(90)
+}
+]);
+
+// LMS_MEMBERS Data
+use lms;
+db.LMS_MEMBERS.deleteMany({});
+db.LMS_MEMBERS.insertMany([
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dc4"), 
+    "MEMBER_ID" : "LM001", 
+    "MEMBER_NAME" : "Akshay", 
+    "CITY" : "CHENNAI", 
+    "DATE_REGISTER" : ISODate("2018-06-12T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-10-26T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Temporary"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dc5"), 
+    "MEMBER_ID" : "LM002", 
+    "MEMBER_NAME" : "Amruta", 
+    "CITY" : "PUNE", 
+    "DATE_REGISTER" : ISODate("2020-03-02T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-06-03T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Temporary"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dc6"), 
+    "MEMBER_ID" : "LM003", 
+    "MEMBER_NAME" : "Ashish", 
+    "CITY" : "CHENNAI", 
+    "DATE_REGISTER" : ISODate("2018-06-12T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-08-17T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Permanent"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dc7"), 
+    "MEMBER_ID" : "LM004", 
+    "MEMBER_NAME" : "Bhakti", 
+    "CITY" : "CHENNAI", 
+    "DATE_REGISTER" : ISODate("2018-06-12T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-05-12T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Temporary"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dc8"), 
+    "MEMBER_ID" : "LM005", 
+    "MEMBER_NAME" : "Gautam", 
+    "CITY" : "BANGALORE", 
+    "DATE_REGISTER" : ISODate("2018-06-12T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-11-06T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Temporary"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dc9"), 
+    "MEMBER_ID" : "LM006", 
+    "MEMBER_NAME" : "Hetvi", 
+    "CITY" : "CHENNAI", 
+    "DATE_REGISTER" : ISODate("2018-06-12T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-10-26T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Permanent"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dca"), 
+    "MEMBER_ID" : "LM007", 
+    "MEMBER_NAME" : "Mayur", 
+    "CITY" : "Pune", 
+    "DATE_REGISTER" : ISODate("2019-09-19T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-10-19T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Permanent"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dcb"), 
+    "MEMBER_ID" : "LM008", 
+    "MEMBER_NAME" : "Nikhil", 
+    "CITY" : "Bangalore", 
+    "DATE_REGISTER" : ISODate("2020-03-09T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-06-03T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Permanent"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dcc"), 
+    "MEMBER_ID" : "LM009", 
+    "MEMBER_NAME" : "Nikita", 
+    "CITY" : "Delhi", 
+    "DATE_REGISTER" : ISODate("2012-12-12T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2021-12-12T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Temporary"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dcd"), 
+    "MEMBER_ID" : "LM010", 
+    "MEMBER_NAME" : "Preity", 
+    "CITY" : "Kerala", 
+    "DATE_REGISTER" : ISODate("2019-06-17T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-08-11T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Permanent"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dce"), 
+    "MEMBER_ID" : "LM011", 
+    "MEMBER_NAME" : "Priti", 
+    "CITY" : "Punjab", 
+    "DATE_REGISTER" : ISODate("2019-08-19T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2023-12-23T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Permanent"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dcf"), 
+    "MEMBER_ID" : "LM012", 
+    "MEMBER_NAME" : "Rasika", 
+    "CITY" : "CHENNAI", 
+    "DATE_REGISTER" : ISODate("2018-06-12T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-10-26T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Temporary"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dd0"), 
+    "MEMBER_ID" : "LM013", 
+    "MEMBER_NAME" : "Renuka", 
+    "CITY" : "PUNE", 
+    "DATE_REGISTER" : ISODate("2020-03-02T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-06-03T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Temporary"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dd1"), 
+    "MEMBER_ID" : "LM014", 
+    "MEMBER_NAME" : "Sandeep", 
+    "CITY" : "CHENNAI", 
+    "DATE_REGISTER" : ISODate("2018-06-12T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-08-17T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Permanent"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dd2"), 
+    "MEMBER_ID" : "LM015", 
+    "MEMBER_NAME" : "Saurabh", 
+    "CITY" : "CHENNAI", 
+    "DATE_REGISTER" : ISODate("2018-06-12T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-05-12T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Temporary"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dd3"), 
+    "MEMBER_ID" : "LM016", 
+    "MEMBER_NAME" : "Sayali", 
+    "CITY" : "BANGALORE", 
+    "DATE_REGISTER" : ISODate("2018-06-12T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-11-06T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Temporary"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dd4"), 
+    "MEMBER_ID" : "LM017", 
+    "MEMBER_NAME" : "Shruti", 
+    "CITY" : "CHENNAI", 
+    "DATE_REGISTER" : ISODate("2018-06-12T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-10-26T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Permanent"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dd5"), 
+    "MEMBER_ID" : "LM018", 
+    "MEMBER_NAME" : "Smita", 
+    "CITY" : "Pune", 
+    "DATE_REGISTER" : ISODate("2019-09-19T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-10-19T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Permanent"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dd6"), 
+    "MEMBER_ID" : "LM019", 
+    "MEMBER_NAME" : "Snehal", 
+    "CITY" : "Bangalore", 
+    "DATE_REGISTER" : ISODate("2020-03-09T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-06-03T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Permanent"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dd7"), 
+    "MEMBER_ID" : "LM020", 
+    "MEMBER_NAME" : "Supriya", 
+    "CITY" : "Delhi", 
+    "DATE_REGISTER" : ISODate("2012-12-12T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2021-12-12T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Temporary"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dd8"), 
+    "MEMBER_ID" : "LM021", 
+    "MEMBER_NAME" : "Writankar", 
+    "CITY" : "Kerala", 
+    "DATE_REGISTER" : ISODate("2019-06-17T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-06-17T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Permanent"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dd9"), 
+    "MEMBER_ID" : "LM022", 
+    "MEMBER_NAME" : "Amit", 
+    "CITY" : "Punjab", 
+    "DATE_REGISTER" : ISODate("2019-08-19T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2023-12-23T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Permanent"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459dda"), 
+    "MEMBER_ID" : "LM023", 
+    "MEMBER_NAME" : "Ritesh", 
+    "CITY" : "Bangalore", 
+    "DATE_REGISTER" : ISODate("2018-06-12T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-08-17T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Permanent"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459ddb"), 
+    "MEMBER_ID" : "LM024", 
+    "MEMBER_NAME" : "Gaurav", 
+    "CITY" : "Delhi", 
+    "DATE_REGISTER" : ISODate("2018-06-12T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-05-12T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Temporary"
+},
+{ 
+    "_id" : ObjectId("5f51518d53f01c44d2459ddc"), 
+    "MEMBER_ID" : "LM025", 
+    "MEMBER_NAME" : "Sagar", 
+    "CITY" : "Kerala", 
+    "DATE_REGISTER" : ISODate("2018-06-12T00:00:00.000+0000"), 
+    "DATE_EXPIRE" : ISODate("2020-11-06T00:00:00.000+0000"), 
+    "MEMBERSHIP_STATUS" : "Temporary"
+}
+]);
+
+// LMS_SUPPPLIERS_DATA
+
+use lms;
+db.LMS_SUPPLIERS_DETAILS.deleteMany({});
+db.LMS_SUPPLIERS_DETAILS.insertMany([
+{ 
+    "_id" : ObjectId("5f51535953f01c44d2459e2d"), 
+    "SUPPLIER_ID" : "S01", 
+    "SUPPLIER_NAME" : "SINGAPORE SHOPPEE", 
+    "ADDRESS" : "CHENNAI", 
+    "CONTACT" : NumberLong(9894123555), 
+    "EMAIL" : "sing@gmail.com"
+},
+{ 
+    "_id" : ObjectId("5f51535953f01c44d2459e2e"), 
+    "SUPPLIER_ID" : "S02", 
+    "SUPPLIER_NAME" : "JK Stores", 
+    "ADDRESS" : "MUMBAI", 
+    "CONTACT" : NumberLong(9940123450), 
+    "EMAIL" : "jks@yahoo.com"
+},
+{ 
+    "_id" : ObjectId("5f51535953f01c44d2459e2f"), 
+    "SUPPLIER_ID" : "S03", 
+    "SUPPLIER_NAME" : "ROSE BOOK STORE", 
+    "ADDRESS" : "TRIVANDRUM", 
+    "CONTACT" : NumberLong(9444411222), 
+    "EMAIL" : "rose@gmail.com"
+},
+{ 
+    "_id" : ObjectId("5f51535953f01c44d2459e30"), 
+    "SUPPLIER_ID" : "S04", 
+    "SUPPLIER_NAME" : "KAVARI STORE", 
+    "ADDRESS" : "DELHI", 
+    "CONTACT" : NumberLong(8630001452), 
+    "EMAIL" : "kavi@redif.com"
+},
+{ 
+    "_id" : ObjectId("5f51535953f01c44d2459e31"), 
+    "SUPPLIER_ID" : "S05", 
+    "SUPPLIER_NAME" : "EINSTEN BOOK GALLARY", 
+    "ADDRESS" : "US", 
+    "CONTACT" : NumberLong(9542000001), 
+    "EMAIL" : "eingal@aol.com"
+},
+{ 
+    "_id" : ObjectId("5f51535953f01c44d2459e32"), 
+    "SUPPLIER_ID" : "S06", 
+    "SUPPLIER_NAME" : "AKBAR STORE", 
+    "ADDRESS" : "MUMBAI", 
+    "CONTACT" : NumberLong(7855623100), 
+    "EMAIL" : "akbakst@aol.com"
+},
+{ 
+    "_id" : ObjectId("5f51535953f01c44d2459e33"), 
+    "SUPPLIER_ID" : "S07", 
+    "SUPPLIER_NAME" : "GUPTA STORE", 
+    "ADDRESS" : "CHENNAI", 
+    "CONTACT" : NumberLong(9899023555), 
+    "EMAIL" : "rom@gmail.com"
+},
+{ 
+    "_id" : ObjectId("5f51535953f01c44d2459e34"), 
+    "SUPPLIER_ID" : "S08", 
+    "SUPPLIER_NAME" : "D MART", 
+    "ADDRESS" : "MUMBAI", 
+    "CONTACT" : NumberLong(9940123450), 
+    "EMAIL" : "dance@gmail.com"
+},
+{ 
+    "_id" : ObjectId("5f51535953f01c44d2459e35"), 
+    "SUPPLIER_ID" : "S09", 
+    "SUPPLIER_NAME" : "BIG BAZAAR", 
+    "ADDRESS" : "TRIVANDRUM", 
+    "CONTACT" : NumberLong(9445511222), 
+    "EMAIL" : "rock@gmail.com"
+},
+{ 
+    "_id" : ObjectId("5f51535953f01c44d2459e36"), 
+    "SUPPLIER_ID" : "S10", 
+    "SUPPLIER_NAME" : "JIO MART", 
+    "ADDRESS" : "DELHI", 
+    "CONTACT" : NumberLong(8644001452), 
+    "EMAIL" : "free@rediff.com"
+},
+{ 
+    "_id" : ObjectId("5f51535953f01c44d2459e37"), 
+    "SUPPLIER_ID" : "S11", 
+    "SUPPLIER_NAME" : "GODREJ FARM", 
+    "ADDRESS" : "US", 
+    "CONTACT" : NumberLong(9542440001), 
+    "EMAIL" : "champ@yahoo.com"
+},
+{ 
+    "_id" : ObjectId("5f51535953f01c44d2459e38"), 
+    "SUPPLIER_ID" : "S12", 
+    "SUPPLIER_NAME" : "ZOMATO", 
+    "ADDRESS" : "MUMBAI", 
+    "CONTACT" : NumberLong(7855623440), 
+    "EMAIL" : "money@gmail.com"
+}
+]);
+
+// LMS_BOOK_ISSUE Data
+use lms;
+db.LMS_BOOK_ISSUE.deleteMany({});
+db.LMS_BOOK_ISSUE.insertMany([
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e47"), 
+    "BOOK_ISSUE_NO" : NumberInt(1), 
+    "MEMBER_ID" : "LM001", 
+    "BOOK_CODE" : "BL000001", 
+    "DATE_ISSUE" : ISODate("2012-05-01T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2012-05-16T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2012-05-16T00:00:00.000+0000")
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e48"), 
+    "BOOK_ISSUE_NO" : NumberInt(2), 
+    "MEMBER_ID" : "LM002", 
+    "BOOK_CODE" : "BL000002", 
+    "DATE_ISSUE" : ISODate("2012-05-01T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2012-05-06T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2012-05-16T00:00:00.000+0000"), 
+    "FINE_RANGE" : "R2"
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e49"), 
+    "BOOK_ISSUE_NO" : NumberInt(3), 
+    "MEMBER_ID" : "LM003", 
+    "BOOK_CODE" : "BL000007", 
+    "DATE_ISSUE" : ISODate("2012-04-01T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2012-04-16T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2012-04-20T00:00:00.000+0000"), 
+    "FINE_RANGE" : "R1"
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e4a"), 
+    "BOOK_ISSUE_NO" : NumberInt(4), 
+    "MEMBER_ID" : "LM004", 
+    "BOOK_CODE" : "BL000005", 
+    "DATE_ISSUE" : ISODate("2012-04-01T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2012-04-16T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2012-04-20T00:00:00.000+0000"), 
+    "FINE_RANGE" : "R1"
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e4b"), 
+    "BOOK_ISSUE_NO" : NumberInt(5), 
+    "MEMBER_ID" : "LM005", 
+    "BOOK_CODE" : "BL000005", 
+    "DATE_ISSUE" : ISODate("2012-04-20T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2012-05-05T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2012-05-05T00:00:00.000+0000")
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e4c"), 
+    "BOOK_ISSUE_NO" : NumberInt(6), 
+    "MEMBER_ID" : "LM003", 
+    "BOOK_CODE" : "BL000007", 
+    "DATE_ISSUE" : ISODate("2012-04-22T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2012-05-07T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2012-05-25T00:00:00.000+0000"), 
+    "FINE_RANGE" : "R4"
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e4d"), 
+    "BOOK_ISSUE_NO" : NumberInt(7), 
+    "MEMBER_ID" : "LM001", 
+    "BOOK_CODE" : "BL000002", 
+    "DATE_ISSUE" : ISODate("2013-05-01T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2013-05-16T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2013-05-16T00:00:00.000+0000")
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e4e"), 
+    "BOOK_ISSUE_NO" : NumberInt(8), 
+    "MEMBER_ID" : "LM002", 
+    "BOOK_CODE" : "BL000001", 
+    "DATE_ISSUE" : ISODate("2013-05-01T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2013-05-06T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2013-05-16T00:00:00.000+0000"), 
+    "FINE_RANGE" : "R2"
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e4f"), 
+    "BOOK_ISSUE_NO" : NumberInt(9), 
+    "MEMBER_ID" : "LM003", 
+    "BOOK_CODE" : "BL000005", 
+    "DATE_ISSUE" : ISODate("2020-04-01T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2020-04-16T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2020-04-20T00:00:00.000+0000"), 
+    "FINE_RANGE" : "R1"
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e50"), 
+    "BOOK_ISSUE_NO" : NumberInt(10), 
+    "MEMBER_ID" : "LM004", 
+    "BOOK_CODE" : "BL000007", 
+    "DATE_ISSUE" : ISODate("2020-04-01T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2020-04-16T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2020-04-20T00:00:00.000+0000"), 
+    "FINE_RANGE" : "R1"
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e51"), 
+    "BOOK_ISSUE_NO" : NumberInt(11), 
+    "MEMBER_ID" : "LM005", 
+    "BOOK_CODE" : "BL000002", 
+    "DATE_ISSUE" : ISODate("2013-04-20T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2013-05-05T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2013-05-05T00:00:00.000+0000")
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e52"), 
+    "BOOK_ISSUE_NO" : NumberInt(12), 
+    "MEMBER_ID" : "LM003", 
+    "BOOK_CODE" : "BL000001", 
+    "DATE_ISSUE" : ISODate("2013-04-22T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2013-05-07T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2013-05-25T00:00:00.000+0000"), 
+    "FINE_RANGE" : "R4"
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e53"), 
+    "BOOK_ISSUE_NO" : NumberInt(13), 
+    "MEMBER_ID" : "LM001", 
+    "BOOK_CODE" : "BL000001", 
+    "DATE_ISSUE" : ISODate("2012-05-16T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2012-05-31T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2012-05-31T00:00:00.000+0000")
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e54"), 
+    "BOOK_ISSUE_NO" : NumberInt(14), 
+    "MEMBER_ID" : "LM002", 
+    "BOOK_CODE" : "BL000002", 
+    "DATE_ISSUE" : ISODate("2012-05-06T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2012-05-21T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2012-05-31T00:00:00.000+0000"), 
+    "FINE_RANGE" : "R2"
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e55"), 
+    "BOOK_ISSUE_NO" : NumberInt(15), 
+    "MEMBER_ID" : "LM003", 
+    "BOOK_CODE" : "BL000007", 
+    "DATE_ISSUE" : ISODate("2012-04-16T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2012-05-01T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2012-05-06T00:00:00.000+0000"), 
+    "FINE_RANGE" : "R1"
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e56"), 
+    "BOOK_ISSUE_NO" : NumberInt(16), 
+    "MEMBER_ID" : "LM004", 
+    "BOOK_CODE" : "BL000005", 
+    "DATE_ISSUE" : ISODate("2012-04-16T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2012-05-01T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2012-05-06T00:00:00.000+0000"), 
+    "FINE_RANGE" : "R1"
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e57"), 
+    "BOOK_ISSUE_NO" : NumberInt(17), 
+    "MEMBER_ID" : "LM005", 
+    "BOOK_CODE" : "BL000005", 
+    "DATE_ISSUE" : ISODate("2012-05-05T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2012-05-20T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2012-05-20T00:00:00.000+0000")
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e58"), 
+    "BOOK_ISSUE_NO" : NumberInt(18), 
+    "MEMBER_ID" : "LM003", 
+    "BOOK_CODE" : "BL000007", 
+    "DATE_ISSUE" : ISODate("2012-05-07T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2012-05-22T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2012-06-11T00:00:00.000+0000"), 
+    "FINE_RANGE" : "R4"
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e59"), 
+    "BOOK_ISSUE_NO" : NumberInt(19), 
+    "MEMBER_ID" : "LM001", 
+    "BOOK_CODE" : "BL000002", 
+    "DATE_ISSUE" : ISODate("2013-05-16T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2013-05-31T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2013-05-31T00:00:00.000+0000")
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e5a"), 
+    "BOOK_ISSUE_NO" : NumberInt(20), 
+    "MEMBER_ID" : "LM002", 
+    "BOOK_CODE" : "BL000001", 
+    "DATE_ISSUE" : ISODate("2013-05-06T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2013-05-21T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2013-05-31T00:00:00.000+0000"), 
+    "FINE_RANGE" : "R2"
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e5b"), 
+    "BOOK_ISSUE_NO" : NumberInt(21), 
+    "MEMBER_ID" : "LM003", 
+    "BOOK_CODE" : "BL000005", 
+    "DATE_ISSUE" : ISODate("2020-04-16T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2020-05-01T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2020-05-06T00:00:00.000+0000"), 
+    "FINE_RANGE" : "R1"
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e5c"), 
+    "BOOK_ISSUE_NO" : NumberInt(22), 
+    "MEMBER_ID" : "LM004", 
+    "BOOK_CODE" : "BL000007", 
+    "DATE_ISSUE" : ISODate("2020-04-16T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2020-05-01T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2020-05-06T00:00:00.000+0000"), 
+    "FINE_RANGE" : "R1"
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e5d"), 
+    "BOOK_ISSUE_NO" : NumberInt(23), 
+    "MEMBER_ID" : "LM005", 
+    "BOOK_CODE" : "BL000002", 
+    "DATE_ISSUE" : ISODate("2013-05-05T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2013-05-20T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2013-05-20T00:00:00.000+0000")
+},
+{ 
+    "_id" : ObjectId("5f5153ca53f01c44d2459e5e"), 
+    "BOOK_ISSUE_NO" : NumberInt(24), 
+    "MEMBER_ID" : "LM003", 
+    "BOOK_CODE" : "BL000001", 
+    "DATE_ISSUE" : ISODate("2013-05-07T00:00:00.000+0000"), 
+    "DATE_RETURN" : ISODate("2013-05-22T00:00:00.000+0000"), 
+    "DATE_RETURNED" : ISODate("2013-06-11T00:00:00.000+0000"), 
+    "FINE_RANGE" : "R4"
+}
+]);
+
+// EMBEDDED_JSON Data
+
+use lms;
+db.EMBEDDED_JSON.deleteMany({});
+db.EMBEDDED_JSON.insertMany([
+{
+    "_id" : ObjectId("6471e019dd6bfa53af1b8e2b"),
+    "BOOK_CODE" : "BL000001",
+    "BOOK_TITLE" : "Java How To Do Program",
+    "CATEGORY" : "JAVA",
+    "AUTHOR" : "Paul J. Deitel",
+    "PUBLICATION" : "Prentice Hall",
+    "PUBLISH_DATE" : ISODate("1999-12-10T00:00:00.000+0000"),
+    "BOOK_EDITION" : NumberInt(6),
+    "PRICE" : NumberInt(600),
+    "RACK_NUM" : "A1",
+    "DATE_ARRIVAL" : ISODate("2011-05-10T00:00:00.000+0000"),
+    "BOOKS_SUPPLIED_BY" : [
+        {
+            "SUPPLIER_ID" : "S01",
+            "SUPPLIER_NAME" : "SINGAPORE SHOPPEE",
+            "ADDRESS" : "CHENNAI",
+            "CONTACT" : NumberLong(9894123555),
+            "EMAIL" : "sing@gmail.com"
+        },
+        {
+            "SUPPLIER_ID" : "S02",
+            "SUPPLIER_NAME" : "JK Stores",
+            "ADDRESS" : "MUMBAI",
+            "CONTACT" : NumberLong(9940123450),
+            "EMAIL" : "jks@yahoo.com"
+        },
+        {
+            "SUPPLIER_ID" : "S03",
+            "SUPPLIER_NAME" : "papa stores",
+            "ADDRESS" : "MUMBAI",
+            "CONTACT" : NumberLong(9940123450),
+            "EMAIL" : "papastores@yahoo.com"
+        }
+    ]
+},
+{
+	"BOOK_CODE": "BL000002",
+	"BOOK_TITLE": "Java: The Complete Reference",
+	"CATEGORY": "JAVA",
+	"AUTHOR": "Herbert Schildt",
+	"PUBLICATION": "Tata Mcgraw Hill",
+	"PUBLISH_DATE": ISODate("2011-10-10T00:00:00.000+0000"),
+	"BOOK_EDITION": NumberInt(5),
+	"PRICE": NumberInt(750),
+	"RACK_NUM": "A1",
+	"DATE_ARRIVAL": ISODate("2011-05-10T00:00:00.000+0000")
+}
+
+]);
+
+// my_first_collection DATA 
+
+// lets insert/refresh the data back again
+db.my_first_collection.deleteMany({});
+db.my_first_collection.insertMany(
+[
+  { "my_first_field" : "ONE" } ,
+  { "my_second_field" : "SECOND" },
+  {"my_first_field": "ONE","my_second_field": "SECOND"},
+  {"my_third_field": "THIRD","my_fourth_field": "FOURTH"},
+	{
+											"my_third_field": "THIRD",
+											"my_fourth_field": "FOURTH"
+	},
+	{
+											"my_first_field": "ONE",
+											"my_second_field": "TWO"
+	},
+	{
+											"my_first_field": "ONE",
+											"my_fourth_field": "FOURTH"
+	}
+]
+);
+
+use lms;
+db.customer.deleteMany({});
+db.customer.insertMany([
+	{
+		"_id": "C001",
+		"name": "Gaurav",
+		"address": "Pune",
+		"billing_address": {
+			"street_no": 123,
+			"landline_no": 74654
+		},
+		"contact": NumberInt("1234566543"),
+		"email_id": "gaurav@gmail.com",
+		"dob": "2008-04-23T00:00:00.000Z",
+		"gender": "Male",
+		"Cart": {
+			"added_products": [
+				{
+					"product_id": "X001",
+					"quantity_of_product": 5,
+					"date_added": "2021-10-20T00:00:00.000Z"
+				},
+				{
+					"product_id": "X002",
+					"quantity_of_product": 2,
+					"date_added": "2021-10-01T00:00:00.000Z"
+				}
+			],
+			"total_cost": 899
+		}
+	},
+	{
+		"_id": "C002",
+		"name": "Tabish",
+		"address": "Pune",
+		"billing_address": {
+			"street_no": 345,
+			"landline_no": 234
+		},
+		"contact": NumberInt("123456"),
+		"email_id": "Tabish@gmail.com",
+		"dob": "2010-04-12T00:00:00.000Z",
+		"gender": "Male",
+		"Cart": {
+			"added_products": [
+				{
+					"product_id": "X003",
+					"quantity_of_product": 5,
+					"date_added": "2021-11-20T00:00:00.000Z"
+				},
+				{
+					"product_id": "X001",
+					"quantity_of_product": 2,
+					"date_added": "2021-03-01T00:00:00.000Z"
+				}
+			],
+			"total_cost": 340
+		}
+	},
+	{
+		"_id": "C003",
+		"name": "Shreyas",
+		"address": "Pune",
+		"billing_address": {
+			"street_no": 789,
+			"landline_no": 9808080
+		},
+		"contact": NumberInt("123454"),
+		"email_id": "shreyas@gmail.com",
+		"dob": "2008-04-02T00:00:00.000Z",
+		"gender": "Male",
+		"Cart": {
+			"added_products": [
+				{
+					"product_id": "X001",
+					"quantity_of_product": 13,
+					"date_added": "2021-11-20T00:00:00.000Z"
+				},
+				{
+					"product_id": "X002",
+					"quantity_of_product": 1,
+					"date_added": "2021-03-01T00:00:00.000Z"
+				}
+			],
+		"total_cost": 3478
+		}
+	},
+	{
+		"_id": "C004",
+		"name": "Amruta",
+		"address": "Chennai",
+		"billing_address": {
+			"street_no": 3333,
+			"landline_no": 202745454
+		},
+		"contact": NumberInt("1232432"),
+		"email_id": "amruta@rediff.com",
+		"dob": "2005-02-02T00:00:00.000Z",
+		"gender": "Female",
+		"Cart": {
+			"added_products": [
+				{
+					"product_id": "X001",
+					"quantity_of_product": 5,
+					"date_added": "2021-10-12T00:00:00.000Z"
+				}
+			],
+			"total_cost": 654
+		}
+	},
+	{
+		"_id": "C005",
+		"name": "Seema",
+		"address": "Bangalore",
+		"billing_address": {
+			"street_no": 567,
+			"landline_no": 287312232
+		},
+		"contact": NumberInt("394809243"),
+		"email_id": "seema@rediff.com",
+		"dob": "2000-12-02T00:00:00.000Z",
+		"gender": "Female",
+		"Cart": {
+			"added_products": [
+				{
+					"product_id": "X002",
+					"quantity_of_product": 4,
+					"date_added": "2021-02-12T00:00:00.000Z"
+				}
+			],
+			"total_cost": 500
+		}
+	},
+	{
+		"_id": "C006",
+		"name": "Priyanka",
+		"address": "Bangalore",
+		"billing_address": {
+			"street_no": 447,
+			"landline_no": 2138092132
+		},
+		"contact": NumberInt("348724"),
+		"email_id": "priyanka@rediff.com",
+		"dob": "2018-12-02T00:00:00.000Z",
+		"gender": "Female",
+		"Cart": {
+			"added_products": [
+				{
+					"product_id": "X001",
+					"quantity_of_product": 1,
+					"date_added": "2021-01-11T00:00:00.000Z"
+				}
+			],
+			"total_cost": 50
+		}
+	}	
+]);

@@ -1,0 +1,14 @@
+function rectangleArea(l,b)
+{
+    let area 
+    area = l*b
+    return area;
+}
+console.log(rectangleArea(5,6));
+
+
+
+
+
+output:
+rectangle.js:7 30

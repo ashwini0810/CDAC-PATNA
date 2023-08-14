@@ -1,0 +1,26 @@
+1. Area of circle and circumference
+2. Print the average of five  numbers entered by user by creating a class named 'Average'  having a method to calculate and print the average.
+3. Find simple interest 
+4. How to convert character to integer in java program
+5. How to swap 2 number in java 
+6. WAP to input C.P and S.P and determine whether the seller get profit or loss.
+7. WAP to calculate area of triangle with Heron's formula  
+8. WAP to input two number and perform substraction when 1st number is greater than the second number otherwise oerform addition .
+9. Write a method named isEven that accepts an integer number.  The method should return true if the given no. is even, or false otherwise
+10.WAP to input 3 number and Find Largest one.
+11.Check whether the given integer is multiple of 5
+12.Write a program to find the given YEAR is LEAP-YEAR or not  
+13.Check whether the given integer is multiple of both 5and7 
+14.WAP to input a character and determine whether it is Vowel or not( using if/else or switch case  )
+15.WAP to input a number and increase the value of number according to the following condition- 
+    n>=500--->+50
+    n>=400--->+40
+    n>=300--->+30
+    n>=200--->+20
+    n>=100--->+10
+
+16.A company decided to give bonus of 5% to employee if his/her year of service is more than 5 years(input salary and year of service)
+17.Create a class named 'Student' with String variable 'name' and integer variable 'roll_no'. Assign the value of roll_no as '54' and that of name as "Abhijeet" by creating an object of the class Student.
+18.A student will not be allowed to sit in exam if his/her attendance is less than 75%. 
+   So, write a method that accept two argument 
+   (first argument  - total no. of classes , second argument – no. of class which is attend by student )  and it print some message accordingly 

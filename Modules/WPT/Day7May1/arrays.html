@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Arrays</title>
+	<script type="text/javascript">
+		var arr = [] // empty array
+		var friends = ["Siddhant", 234,3.34, true] // declare array with values
+		              //0           1   2     3
+
+		console.log("Length of arrays", friends.length)
+		//Access element
+		console.log(friends[1])
+		friends[1] = "Rajat"
+		friends[3] = false
+		console.log(friends)
+
+		//Array operations
+		//Insert
+		friends.push("Neha") //adding element at the end of array
+		console.log(friends)
+		friends.unshift("Anubhav") // Adding element at the begining
+		console.log(friends)
+
+		//Remove
+		friends.pop() //Remove last element of the array
+		console.log(friends)
+		friends.shift() // remove first element of the array
+		console.log(friends)
+		friends.splice(2,2)
+		console.log(friends)
+
+		var arr = ["Anubhav", "Rajat", "Rahul"]
+		//Arrays functions:
+		arr.reverse()
+		console.log(arr)
+		console.log(arr.includes("Anu"))
+		console.log(arr.join("abcdef"))
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
