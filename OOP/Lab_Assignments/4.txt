@@ -1,6 +1,0 @@
-1.Write a program to print the area and perimeter of a triangle having sides of 3, 4 and 5 units by creating a class named 'Triangle' with constructor having the three sides as its parameters.
-2. WAP to create a class and define default constructor with in it and also define a normal method in it and invoke both methods using their Instance
-3. WAP to create a class and define a constructor with in it and you have to initialize the object of that class.  
-4. WAP to create a ‘Employee’  class and define a constructor that accept three argument ( first argument - name , second argument- age,   third  argument  – monthly salary ) and define a normal method that print all these values.  
-
-
